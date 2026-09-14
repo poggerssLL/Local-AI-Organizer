@@ -4,6 +4,25 @@ Este projeto oferece uma IA local para apoiar a graduação em Engenharia de Con
 
 Todo o processamento será feito no computador: o Ollama executa os modelos, o ChromaDB armazena os vetores localmente e nenhum serviço de IA em nuvem é necessário.
 
+Este repositório também contém a documentação central usada pelo Codex para coordenar os
+projetos locais de Erick. Essa função de coordenação não mistura os códigos dos projetos e
+não concede autorização automática para alterar outros repositórios.
+
+## Coordenação dos projetos locais
+
+O contexto compartilhado entre novos chats deste projeto fica em:
+
+- [registro dos projetos](docs/PROJECT_REGISTRY.md);
+- [mapa dos sistemas](docs/SYSTEM_MAP.md);
+- [política de orquestração](docs/ORCHESTRATION_POLICY.md);
+- [roadmap central](docs/ROADMAP.md);
+- [modelo de delegação](docs/DELEGATION_TEMPLATE.md).
+
+O `AGENTS.md` instrui novos chats a ler esses documentos. Cada implementação deve ocorrer
+em uma tarefa separada, aberta no projeto correto, e somente após autorização explícita.
+Os estados registrados aqui são orientação; o baseline técnico sempre deve ser confirmado
+no repositório alvo.
+
 ## Requisitos
 
 - Windows com PowerShell;
