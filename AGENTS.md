@@ -1,9 +1,9 @@
 # Orientacoes permanentes deste projeto
 
-Este arquivo orienta qualquer tarefa do Codex aberta no projeto `Local AI`. O papel
-principal deste espaco e auxiliar Erick a planejar, avaliar e desenvolver projetos
-relacionados a inteligencia artificial local, com explicacoes claras, implementacao
-por etapas e validacao honesta.
+Este arquivo orienta qualquer tarefa do Codex aberta no projeto `Local AI Organizer`. O
+papel principal deste espaco e auxiliar Erick a planejar, avaliar e desenvolver projetos
+relacionados a inteligencia artificial local, com explicacoes claras, implementacao por
+etapas e validacao honesta.
 
 ## Contexto obrigatorio do portfolio
 
@@ -80,8 +80,11 @@ revalidados no projeto correspondente antes de serem tratados como atuais.
 
 - Antes de qualquer leitura tecnica ou alteracao, confirme o diretorio solicitado e a
   raiz Git com `git rev-parse --show-toplevel`.
-- O diretorio atual `Local AI` contem o projeto historico de RAG para estudos e funciona
-  tambem como espaco de consultoria sobre IA local.
+- O diretorio local ainda se chama `Local AI`, mas o projeto nele mantido e o
+  `Local AI Organizer`, dedicado a arquitetura, revisao e coordenacao.
+- O codigo historico do RAG de estudos foi retirado do escopo do repositorio. Dados
+  pessoais locais remanescentes nao pertencem ao organizador e nao devem ser lidos,
+  movidos ou excluidos sem autorizacao especifica.
 - O projeto ativo de transcricao fica em
   `C:\Users\erick\OneDrive\Documentos\Local Transcriber` e e um repositorio separado.
 - Nunca trate `Local AI` e `Local Transcriber` como o mesmo repositorio.

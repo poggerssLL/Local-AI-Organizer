@@ -7,7 +7,7 @@
                            |
                     autoriza e decide
                            |
-                 Local AI / coordenador
+            Local AI Organizer / coordenador
                     /      |       \
                    /       |        \
       Local Transcriber  Local File Agent  Jarvis Local
@@ -24,7 +24,7 @@ componentes já estejam conectados.
 
 ## Responsabilidades
 
-### `Local AI`
+### `Local AI Organizer`
 
 - mantém o contexto do portfólio;
 - revisa evidências e baselines;
@@ -34,8 +34,8 @@ componentes já estejam conectados.
 - acompanha resultados quando autorizado;
 - não implementa silenciosamente trabalho em projetos irmãos.
 
-O RAG de estudos existente continua sendo uma função própria deste repositório. A camada
-de coordenação não deve quebrar nem absorver essa aplicação.
+O antigo RAG de estudos não faz parte do organizador. Materiais e dados pessoais locais
+remanescentes não devem ser tratados como contexto compartilhado do portfólio.
 
 ### `Local Transcriber`
 

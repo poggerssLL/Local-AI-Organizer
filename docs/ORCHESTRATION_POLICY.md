@@ -63,12 +63,12 @@ em etapas críticas.
 
 Coleção planejada, criada uma por vez:
 
-| Skill | Função | Estado em 2026-09-14 |
+| Skill | Função | Estado em 2026-09-15 |
 | --- | --- | --- |
 | `local-project-orientation` | Confirmar projeto, raiz, instruções e estado inicial | Criada, aprovada pelo validador e descoberta pelo Codex em 2026-09-14 |
-| `phase-gate-reviewer` | Aprovar, bloquear ou pedir complemento de uma etapa | Planejada |
-| `implementation-prompt-builder` | Gerar um prompt implementador completo | Planejada |
-| `local-ai-release-review` | Revisar higiene, documentação, commit e publicação | Planejada |
+| `phase-gate-reviewer` | Aprovar, bloquear ou pedir complemento de uma etapa | Criada e aprovada pelo validador em 2026-09-14; descoberta pelo Codex confirmada em 2026-09-15 |
+| `implementation-prompt-builder` | Gerar um prompt implementador completo e recomendar modelo e esforço | Criada, aprovada pelo validador e descoberta pelo Codex em 2026-09-15 |
+| `local-ai-release-review` | Revisar higiene, documentação, commit e publicação | Criada e aprovada pelo validador em 2026-09-15; descoberta em novo chat ainda não confirmada |
 | `local-project-coordinator` | Priorizar o portfólio e delegar tarefas | Planejada |
 | `local-integration-architect` | Projetar contratos seguros entre projetos | Planejada |
 

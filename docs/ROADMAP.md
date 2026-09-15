@@ -1,6 +1,6 @@
 # Roadmap central
 
-Atualizado em: 2026-09-14.
+Atualizado em: 2026-09-15.
 
 ## Regra de sequência
 
@@ -13,13 +13,17 @@ entrega por vez e só avance depois de revisar o resultado anterior.
 2. **Concluído:** consolidar o contexto central em `PROJECT_REGISTRY.md`,
    `SYSTEM_MAP.md`, `ORCHESTRATION_POLICY.md`, `ROADMAP.md` e
    `DELEGATION_TEMPLATE.md`.
-3. **Próximo:** abrir um novo chat de teste no projeto `Local AI` e pedir que ele
-   resuma o portfólio, as regras de autorização e o próximo passo sem usar o histórico
-   desta conversa.
-4. Criar e validar, uma por vez, as skills `phase-gate-reviewer`,
-   `implementation-prompt-builder` e `local-ai-release-review`.
-5. Criar `local-project-coordinator` depois que os fluxos básicos estiverem estáveis.
-6. Criar `local-integration-architect` somente quando dois projetos reais precisarem de
+3. **Concluído:** validar em um novo chat do projeto `Local AI` a recuperação do
+   portfólio, das regras de autorização e do próximo passo a partir da documentação
+   central.
+4. **Concluído:** criar e validar a skill `phase-gate-reviewer`.
+5. **Concluído:** criar e validar a skill `implementation-prompt-builder`, incluindo a
+   recomendação justificada de modelo e esforço para cada nova tarefa.
+6. **Concluído:** confirmar a descoberta de `implementation-prompt-builder` e criar e
+   validar a skill `local-ai-release-review`.
+7. **Próximo:** confirmar em novo chat a descoberta de `local-ai-release-review` e criar
+   `local-project-coordinator` depois que os fluxos básicos estiverem estáveis.
+8. Criar `local-integration-architect` somente quando dois projetos reais precisarem de
    um contrato comum.
 
 ## Local Transcriber
@@ -75,6 +79,6 @@ quiser explicitamente usar outra máquina.
 
 ## Próximo marco
 
-O próximo marco aplicável é testar esta documentação em um chat novo e, se o contexto for
-recuperado corretamente, criar `phase-gate-reviewer`. Não inicie todas as skills
-simultaneamente.
+O próximo marco aplicável é confirmar a descoberta de `local-ai-release-review` em novo
+chat e, se estiver disponível, criar `local-project-coordinator`. Mantenha uma skill por
+vez e não antecipe `local-integration-architect`.

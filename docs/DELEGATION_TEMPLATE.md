@@ -12,6 +12,20 @@ projeto. Resolva ao vivo o caminho e o baseline; não salve IDs de runtime neste
 - existência de outra tarefa escrevendo no mesmo checkout: `[não | sim, parar]`;
 - baseline: `[confirmado no repositório | informado e ainda não confirmado]`.
 
+## Perfil de execução
+
+Antes de criar a tarefa, recomende e justifique:
+
+- modelo: `[MODELO DISPONÍVEL NO DESTINO]`;
+- esforço: `[NÍVEL COMPATÍVEL COM O MODELO]`;
+- motivo: `[COMPLEXIDADE, RISCO E CUSTO DE RETRABALHO]`;
+- alternativa econômica: `[PERFIL OU NÃO RECOMENDADA]`;
+- gatilho de escalada: `[CONDIÇÃO OBJETIVA]`;
+- limitações: `[DISPONIBILIDADE OU CONSUMO DESCONHECIDO]`.
+
+Consulte a disponibilidade real no momento da delegação. Não trate preços da API como
+equivalentes ao consumo dos limites do aplicativo Codex e não prometa economia de tokens.
+
 ## Prompt-base
 
 ```text

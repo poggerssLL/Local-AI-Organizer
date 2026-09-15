@@ -45,10 +45,13 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Índices, vetores e outros dados gerados pelo RAG
-Dados/*
-!Dados/.gitkeep
-Dados/chroma/
+# Dados locais privados preservados fora do organizador
+Dados/
+Documentos/
+avaliacao/
+*.pdf
+
+# Bancos e índices locais não versionáveis
 chroma.sqlite3
 *.sqlite
 *.sqlite3
@@ -61,11 +64,6 @@ chroma.sqlite3
 *.index
 *.pickle
 
-# Materiais pessoais de estudo
-Documentos/*
-!Documentos/.gitkeep
-*.pdf
-
 # Modelos locais
 modelos/
 models/
@@ -75,9 +73,3 @@ models/
 *.onnx
 *.pt
 *.pth
-
-# Saídas geradas pelas avaliações (podem conter respostas derivadas dos PDFs)
-avaliacao/linha_base_geracao.json
-avaliacao/resultado_fundamentado.json
-avaliacao/resultados/*.json
-!avaliacao/resultados/.gitkeep
