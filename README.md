@@ -20,7 +20,8 @@ e dados locais remanescentes continuam fora do Git e não fazem parte do organiz
 - [prompt do gate de roteamento no Orca](docs/PROMPT_ORCA_MODEL_ROUTING_IMPLEMENTATION.md);
 - [relatório histórico do piloto Orca](docs/PHASE_ORCA_PILOT_2026-09-15.md);
 - [relatório do gate de roteamento no Orca](docs/PHASE_ORCA_MODEL_ROUTING_2026-09-17.md);
-- [complemento do gate de roteamento no Orca](docs/PHASE_ORCA_MODEL_ROUTING_COMPLEMENT_2026-09-18.md).
+- [complemento do gate de roteamento no Orca](docs/PHASE_ORCA_MODEL_ROUTING_COMPLEMENT_2026-09-18.md);
+- [portabilidade das skills para Antigravity](docs/PHASE_ANTIGRAVITY_SKILL_PORT_2026-09-18.md).
 
 O `AGENTS.md` instrui novos chats a ler esses documentos. Cada implementação em outro
 projeto exige autorização explícita, uma tarefa delimitada no projeto correto e revisão
@@ -43,6 +44,12 @@ estabilizado sinteticamente com `windows.sandbox=unelevated`
 (`docs/PHASE_ORCA_MODEL_ROUTING_COMPLEMENT_2026-09-18.md`), mas leitura de sentinelas, handoff
 e operação interativa via PTY ainda não foram validados. Projetos reais permanecem bloqueados.
 
+A evolução desejada é multi-modelo e, depois, multi-executor. Os próximos candidatos
+informados são Claude Opus, Claude Sonnet e GPT-OSS por meio do catálogo do Antigravity;
+eles são modelos do mesmo executor, não agentes independentes. Outros executores locais
+ou CLI poderão ser adicionados futuramente por adaptadores próprios. OpenRouter permanece
+opcional e separado por envolver API, credencial, custo e envio de dados à nuvem.
+
 ## Skills do fluxo
 
 - `local-project-orientation`: confirma projeto, raiz e baseline;
@@ -54,6 +61,9 @@ e operação interativa via PTY ainda não foram validados. Projetos reais perma
 - `local-integration-architect`: projeta contratos, permissões e gates entre projetos,
   orquestradores e agentes.
 
-As skills pessoais ficam fora deste repositório e devem ser confirmadas no contexto em
-que serão usadas. Nenhuma menção a uma skill autoriza instalação, delegação, commit ou
-push.
+As seis skills possuem agora versões portáteis e versionáveis em `.agents/skills/`, no
+formato de workspace aceito pelo Antigravity. Erick informou em 2026-09-18 que as seis
+entradas já aparecem em `/skills`; ainda falta o canário comportamental somente leitura.
+Skills pessoais externas podem continuar existindo, mas não devem ser
+presumidas como compartilhadas. Nenhuma skill amplia autorização nem concede instalação,
+delegação, commit ou push.

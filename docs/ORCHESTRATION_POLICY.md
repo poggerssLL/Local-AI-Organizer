@@ -139,14 +139,16 @@ sessões existentes; bypasses e acesso fora do workspace continuam proibidos.
 
 ## Roteamento de executor, modelo e esforço
 
-O Organizer pode preparar perfis para Codex e Antigravity, mas cada execução deve fixar
-explicitamente `executor`, `modelo`, `esforço`, `perfil de contexto` e `fallback`. O Orca
-continua sendo a camada de lançamento e acompanhamento; ele não escolhe sozinho qual
-provedor deve consumir a tarefa.
+O Organizer pode preparar perfis para Codex, Antigravity e futuros executores aprovados,
+mas cada execução deve fixar explicitamente `executor`, `provedor`, `modelo`, `esforço`,
+`perfil de contexto` e `fallback`. O Orca continua sendo a camada de lançamento e
+acompanhamento; ele não escolhe sozinho qual provedor deve consumir a tarefa.
 
 Regras obrigatórias:
 
 - preferência explícita de Erick prevalece quando o perfil existir e estiver disponível;
+- modelo e executor são dimensões separadas: Claude, Gemini ou GPT-OSS expostos pelo
+  Antigravity continuam usando o executor `antigravity`;
 - disponibilidade deve ser consultada no executor no momento da execução;
 - modelo desconhecido, incompatível ou indisponível encerra o lançamento com erro claro;
 - `fallback: none` é o padrão; fallback automático exige autorização nominal e nunca
@@ -159,8 +161,24 @@ Regras obrigatórias:
   envelope;
 - perfis devem ser locais ao projeto ou à execução. Argumentos globais persistentes são
   proibidos até revisão separada;
+- um novo modelo no executor existente exige perfil e canário próprios; um novo executor
+  exige também adaptador de lançamento, cancelamento, permissões e evidências;
 - consumo e limites pertencem ao provedor efetivamente usado e devem ser registrados
   quando observáveis, sem equiparar assinatura de aplicativo a cobrança de API.
+
+### Expansão planejada
+
+1. concluir o canário comportamental das skills portáteis no Antigravity;
+2. homologar o fluxo interativo PTY ou handoff assistido entre os executores atuais;
+3. inventariar no catálogo real do Antigravity os identificadores e esforços de Claude
+   Opus, Claude Sonnet e GPT-OSS, sem criar perfis por nomes presumidos;
+4. materializar e validar um perfil adicional por vez em ambiente sintético;
+5. definir um contrato de adaptador antes de incluir qualquer terceiro executor ou CLI;
+6. avaliar OpenRouter separadamente, com decisão explícita sobre API key, cobrança,
+   retenção, dados enviados e fallback.
+
+Nenhum item futuro autoriza instalação, login, credenciais, cobrança, API em nuvem ou
+operação em projeto real.
 
 O contexto comum usa um manifesto versionado: `AGENTS.md`, documentos centrais
 obrigatórios, documentação viva do projeto alvo e somente os relatórios históricos
@@ -181,20 +199,25 @@ validação interativa via PTY no Orca. Projetos reais permanecem categoricament
 
 ## Seleção de skills
 
-O coordenador deve preferir skills pessoais para procedimentos comuns a vários projetos e
-skills do repositório para regras específicas. A menção explícita no prompt é preferível
-em etapas críticas.
+O coordenador deve preferir skills do repositório para protocolos compartilhados por
+Codex e Antigravity e skills pessoais para procedimentos exclusivos de um executor. As
+seis skills do Organizer foram materializadas em `.agents/skills/` no formato portátil de
+workspace em 2026-09-18. A menção explícita no prompt é preferível em etapas críticas.
+
+Materialização não equivale a descoberta. Erick informou em 2026-09-18 que as seis skills
+aparecem em `/skills` no Antigravity; isso confirma a descoberta segundo relato do
+usuário, mas não substitui o canário comportamental somente leitura.
 
 Coleção planejada, criada uma por vez:
 
-| Skill | Função | Estado em 2026-09-15 |
+| Skill | Função | Estado portátil em 2026-09-18 |
 | --- | --- | --- |
-| `local-project-orientation` | Confirmar projeto, raiz, instruções e estado inicial | Criada, aprovada pelo validador e descoberta pelo Codex em 2026-09-14 |
-| `phase-gate-reviewer` | Aprovar, bloquear ou pedir complemento de uma etapa | Criada e aprovada pelo validador em 2026-09-14; descoberta pelo Codex confirmada em 2026-09-15 |
-| `implementation-prompt-builder` | Gerar um prompt implementador completo e recomendar modelo e esforço | Criada, aprovada pelo validador e descoberta pelo Codex em 2026-09-15 |
-| `local-ai-release-review` | Revisar higiene, documentação, commit e publicação | Criada, aprovada pelo validador e descoberta pelo Codex em 2026-09-15 |
-| `local-project-coordinator` | Priorizar o portfólio, escolher perfil e coordenar uma tarefa por vez | Criada, aprovada pelo validador, descoberta e testada funcionalmente em 2026-09-15 |
-| `local-integration-architect` | Projetar contratos seguros entre projetos, orquestradores e agentes | Criada, aprovada pelo validador e descoberta pelo Codex em 2026-09-15 |
+| `local-project-orientation` | Confirmar projeto, raiz, instruções e estado inicial | Materializada; descoberta no Antigravity informada por Erick; canário pendente |
+| `phase-gate-reviewer` | Aprovar, bloquear ou pedir complemento de uma etapa | Materializada; descoberta no Antigravity informada por Erick; canário pendente |
+| `implementation-prompt-builder` | Gerar prompt e recomendar executor, modelo e esforço | Materializada; descoberta no Antigravity informada por Erick; canário pendente |
+| `local-ai-release-review` | Revisar higiene, documentação, commit e publicação | Materializada; descoberta no Antigravity informada por Erick; canário pendente |
+| `local-project-coordinator` | Priorizar o portfólio, escolher perfil e coordenar uma tarefa por vez | Materializada; descoberta no Antigravity informada por Erick; canário pendente |
+| `local-integration-architect` | Projetar contratos seguros entre projetos, orquestradores e agentes | Materializada; descoberta no Antigravity informada por Erick; canário pendente |
 
 A ausência dessas skills não impede a delegação: o coordenador pode seguir esta política e
 o modelo de prompt manualmente. As skills operacionalizam o envelope concedido por Erick,

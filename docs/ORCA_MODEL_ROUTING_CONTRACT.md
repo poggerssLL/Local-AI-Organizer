@@ -1,6 +1,6 @@
 # Contrato de roteamento de executores e modelos no Orca
 
-Atualizado em: 2026-09-17.
+Atualizado em: 2026-09-18.
 
 ## Identificação e estado
 
@@ -127,8 +127,10 @@ O perfil `organizer-core-v1` contém, nesta ordem:
 7. contrato e relatório da fase atual quando forem relevantes.
 
 O projeto alvo acrescenta seu próprio `AGENTS.md` e documentação viva. Relatórios
-históricos só entram quando citados pelo manifesto. Skills pessoais do Codex e skills do
-Antigravity permanecem capacidades distintas e precisam ser descobertas no executor.
+históricos só entram quando citados pelo manifesto. O Organizer materializa seis skills
+portáteis em `.agents/skills/`; cada executor ainda precisa descobri-las no próprio
+runtime. Skills pessoais, ferramentas nativas, permissões e memória privada continuam
+capacidades distintas e não são transferidas entre Codex e Antigravity.
 
 Cada canário deve devolver caminhos relativos, hashes dos documentos exigidos e duas
 afirmações sentinela definidas pelo teste. Isso prova leitura do mesmo material, não
@@ -198,6 +200,25 @@ máximo três tentativas fundamentadas da mesma causa, o gate é bloqueado.
    histórico.
 
 O gate não aprova automaticamente operação em projeto real.
+
+## Expansão posterior ao MVP
+
+Erick pretende usar modelos e agentes adicionais conforme disponibilidade e limites de
+suas assinaturas. A expansão seguirá duas trilhas diferentes:
+
+- **multi-modelo no executor existente:** Claude Opus, Claude Sonnet e GPT-OSS são
+  candidatos informados para execução pelo Antigravity. Seus IDs, esforços e limites
+  precisam ser descobertos no catálogo real antes de criar perfis;
+- **multi-executor:** qualquer novo agente CLI ou runtime além de Codex e Antigravity
+  exige adaptador próprio para iniciar, observar, cancelar, retomar, confinar permissões e
+  devolver evidências;
+- **provedor de API:** OpenRouter ou serviço equivalente permanece fora do MVP e requer
+  contrato separado para credencial, cobrança, privacidade, retenção, catálogo e falhas.
+
+A sequência é: concluir skills e PTY dos executores atuais, inventariar capacidades,
+materializar um perfil por vez, executar canário sintético de leitura, validar
+cancelamento e somente então considerar escrita descartável. Nenhum novo perfil herda
+automaticamente a aprovação de Gemini ou Codex.
 
 ## Evidências mínimas
 

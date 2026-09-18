@@ -104,6 +104,14 @@ revalidados no projeto correspondente antes de serem tratados como atuais.
   compativel com o envelope aprovado.
 - Codex e Antigravity sao executores diferentes; trocar entre eles inicia uma nova sessao
   e nao transfere implicitamente memoria de conversa, permissoes, skills ou estado oculto.
+- Modelo nao e sinonimo de executor. Gemini, Claude e GPT-OSS podem ser modelos expostos
+  pelo Antigravity sem se tornarem agentes independentes no Orca.
+- Erick pretende ampliar gradualmente o Organizer para outros modelos e, futuramente,
+  outros executores alem de Codex e Antigravity. Cada inclusao exige descoberta atual,
+  adaptador ou perfil explicito, canario sintetico e gate proprio antes de projeto real.
+- Claude Opus, Claude Sonnet e GPT-OSS sao candidatos informados por Erick para perfis
+  futuros via Antigravity. OpenRouter e outros provedores de API permanecem uma fase
+  opcional separada, dependente de autorizacao para conta, credencial, custo e nuvem.
 - O contexto compartilhado deve vir de `AGENTS.md`, dos documentos obrigatorios, da
   documentacao viva do projeto alvo e de um pacote de passagem sanitizado quando houver
   troca de executor. Nao carregue todos os arquivos Markdown indiscriminadamente.
@@ -114,6 +122,21 @@ revalidados no projeto correspondente antes de serem tratados como atuais.
 - Perfis do Orca devem ser especificos por projeto ou execucao. Nao persista argumentos
   globais de modelo, `--new-project` ou qualquer bypass sem gate proprio e revisao do
   impacto em outras sessoes.
+
+## Skills portateis do Organizer
+
+- As skills compartilhadas deste projeto ficam em `.agents/skills/<nome>/SKILL.md` e
+  devem permanecer compativeis com executores que implementem esse formato.
+- A existencia do arquivo nao comprova descoberta. Cada executor deve listar ou carregar
+  a skill no proprio runtime antes que ela seja citada como disponivel. Erick informou em
+  2026-09-18 que as seis skills aparecem no Antigravity; o canario comportamental ainda
+  permanece pendente.
+- Recursos auxiliares ficam dentro da pasta da propria skill e devem usar caminhos
+  relativos. Nao referencie diretorios pessoais de configuracao de outro executor.
+- Ao portar ou atualizar uma skill, preserve autorizacao, parada, um escritor por
+  checkout, separacao entre evidencias e proibicao de fallback silencioso.
+- Uma skill portatil nao transfere historico, memoria privada, ferramentas nativas,
+  permissoes ou capacidade de criar workers entre executores.
 
 ## Autoridade operacional em ambientes descartaveis
 

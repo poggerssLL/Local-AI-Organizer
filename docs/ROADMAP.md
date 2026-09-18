@@ -62,9 +62,23 @@ entrega por vez e só avance depois de revisar o resultado anterior.
     sem acionar ferramentas de leitura de arquivos, a leitura de sentinelas pelo Codex e o pacote de
     passagem automatizado entre provedores permanecem explicitamente como ainda não validados.
     Projetos reais continuam bloqueados.
-15. **Próximo, sujeito a gate explícito:** antes de qualquer operação em projetos reais, definir
+15. **Concluído:** portar as seis skills do Organizer para `.agents/skills/`, com
+    frontmatter e referências locais compatíveis com o formato de workspace do Antigravity.
+    A materialização, a descoberta pelo runtime e o canário somente leitura
+    (`local-project-orientation`) foram executados e aprovados no Antigravity em 2026-09-18
+    sem mutações no Git.
+16. **Próximo, sujeito a gate explícito:** antes de qualquer operação em projetos reais, definir
     e validar o fluxo de execução interativa com PTY no Orca ou pacote de passagem assistido para
     tarefas de codificação multi-turnos, mantendo projetos reais sob bloqueio até novo gate.
+17. **Planejado após o gate dos executores atuais:** inventariar e materializar, um por
+    vez, perfis Antigravity para Claude Opus, Claude Sonnet e GPT-OSS, usando os IDs e
+    esforços retornados pelo catálogo real e canário sintético para cada perfil.
+18. **Planejado posteriormente:** permitir novos executores além de Codex e Antigravity
+    por um contrato de adaptador versionado. Cada executor terá descoberta, permissões,
+    inicialização, retomada, cancelamento, evidências e gate próprios.
+19. **Opcional e separado:** avaliar OpenRouter somente após decisão explícita sobre API,
+    credencial, custo, privacidade, retenção e dados permitidos. Não confundir esse
+    provedor em nuvem com os benefícios incluídos na assinatura de aplicativos.
 
 ## Local Transcriber
 
@@ -119,10 +133,8 @@ quiser explicitamente usar outra máquina.
 
 ## Próximo marco
 
-O próximo marco é a validação da operação interativa via terminal PTY no Orca (utilizando os
-Quick Commands escopados já registrados) ou pacote de passagem assistido para tarefas de
-desenvolvimento multi-turnos. O complemento sintético de 2026-09-18 concluiu a estabilização do
-timeout do Codex no Windows sob `windows.sandbox=unelevated`, mas demonstrou que a invocação de
-ferramentas de leitura e o fluxo de handoff no Codex CLI dependem do canal interativo. Até que essa
-validação interativa seja homologada em gate próprio, nenhum projeto real está liberado para
-operação pelo Orca.
+Com o canário de orientação aprovado no Antigravity sem mutações no Git, o próximo marco
+volta a ser a validação da operação interativa via terminal PTY no Orca ou a estruturação
+do pacote de passagem assistido para tarefas multi-turnos. A ampliação para Claude, GPT-OSS
+e novos executores ocorre somente depois desses gates e um perfil por vez. Até a
+homologação formal, nenhum projeto real está liberado para operação pelo Orca.

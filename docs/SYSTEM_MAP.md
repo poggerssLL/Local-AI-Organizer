@@ -31,6 +31,8 @@ componentes já estejam conectados.
 - decide qual projeto deve receber uma tarefa;
 - gera prompts delimitados;
 - seleciona skills disponíveis;
+- mantém em `.agents/skills/` os protocolos portáteis do próprio Organizer, cuja
+  descoberta deve ser validada separadamente em cada executor;
 - acompanha resultados quando autorizado;
 - não implementa silenciosamente trabalho em projetos irmãos.
 
@@ -41,14 +43,25 @@ Commands escopados ao repositório:
 ```text
 Erick escolhe um perfil nos Quick Commands do Orca
   -> Organizer fixa projeto, executor, modelo, esforço, contexto e permissões
-  -> Orca inicia um único worker Codex ou Antigravity
+  -> Orca inicia um único worker de um executor aprovado
   -> worker lê o contexto versionado e devolve evidências
   -> Organizer revisa o gate
 ```
 
-A troca entre Codex e Antigravity ocorre entre execuções, nunca como substituição
-silenciosa no meio de uma escrita. A memória comum pertence aos documentos versionados e
-ao pacote de passagem; não à conversa privada de um provedor.
+A troca entre executores ocorre entre execuções, nunca como substituição silenciosa no
+meio de uma escrita. A memória comum pertence aos documentos versionados e ao pacote de
+passagem; não à conversa privada de um provedor.
+
+```text
+Executor aprovado
+  -> expõe um catálogo de modelos
+  -> um perfil materializado fixa exatamente um modelo e esforço
+  -> um adaptador do Orca inicia, observa e cancela o processo
+```
+
+No estado atual, Codex e Antigravity são os executores materializados. Gemini, Claude e
+GPT-OSS podem ser famílias de modelo do Antigravity. Novos executores, CLIs locais ou
+provedores de API entram somente após contrato e canário próprios.
 
 O antigo RAG de estudos não faz parte do organizador. Materiais e dados pessoais locais
 remanescentes não devem ser tratados como contexto compartilhado do portfólio.
