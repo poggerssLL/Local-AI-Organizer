@@ -102,17 +102,22 @@ Campos obrigatórios:
 - `permissions_profile`: envelope existente, sem ampliação implícita;
 - `single_writer`: sempre `true` para escrita.
 
-Perfis materializados em `docs/orca-model-routing-profiles.json` e validados:
+Perfis materializados em `docs/orca-model-routing-profiles.json` (9 perfis unificados):
 
 | Perfil | Profile ID | Executor | Modelo confirmado | Esforço | Estado da validação |
 | --- | --- | --- | --- | --- | --- |
-| `Organizer Codex econômico` | `organizer-codex-economy` | Codex | `gpt-5.6-terra` | `medium` | Materializado; timeout superado com `windows.sandbox=unelevated` (ExitCode 0); leitura de sentinelas e handoff ainda não validados |
+| Organizer Codex leve | `organizer-codex-luna` | Codex | `gpt-5.6-luna` | `low` | Materializado no schema e aceito pelo catálogo Codex |
+| Organizer Codex econômico | `organizer-codex-economy` | Codex | `gpt-5.6-terra` | `medium` | Materializado; timeout superado com `unelevated` (ExitCode 0) |
 | Organizer Codex forte | `organizer-codex-strong` | Codex | `gpt-5.6-sol` | `high` | Materializado e aceito pelo catálogo Codex |
-| Organizer Gemini econômico | `organizer-gemini-economy` | Antigravity | `gemini-3.8-flash-medium` | `medium` | Materializado; canário sintético validado com leitura e escrita reversível |
+| Organizer Codex Astra | `organizer-codex-astra` | Codex | `gpt-5.6-astra` | `extreme` | Materializado; reservado para exceções críticas extremas |
+| Organizer Gemini econômico | `organizer-gemini-economy` | Antigravity | `gemini-3.8-flash-medium` | `medium` | Materializado; canário sintético validado com leitura e escrita |
 | Organizer Gemini forte | `organizer-gemini-strong` | Antigravity | `gemini-3.8-flash-high` | `high` | Materializado e confirmado em `agy models` |
+| Organizer Claude Sonnet | `organizer-claude-sonnet` | Antigravity | `claude-sonnet-4-6` | `high` | Materializado e confirmado em `agy models` |
+| Organizer Claude Opus | `organizer-claude-opus` | Antigravity | `claude-opus-4-6-thinking` | `high` | Materializado e confirmado em `agy models` |
+| Organizer GPT-OSS | `organizer-gpt-oss` | Antigravity | `gpt-oss-120b-medium` | `medium` | Materializado e confirmado em `agy models` |
 
-Nenhum perfil indisponível foi materializado. Cada perfil segue rigorosamente o schema
-`orca-model-routing/v1` com `fallback: none` e `single_writer: true`.
+Todos os 9 perfis seguem rigorosamente o schema `orca-model-routing/v1` com `fallback: none`
+e `single_writer: true`. A delegação é bidirecional e simétrica entre Codex e Antigravity.
 
 ## Contexto comum
 
@@ -127,10 +132,10 @@ O perfil `organizer-core-v1` contém, nesta ordem:
 7. contrato e relatório da fase atual quando forem relevantes.
 
 O projeto alvo acrescenta seu próprio `AGENTS.md` e documentação viva. Relatórios
-históricos só entram quando citados pelo manifesto. O Organizer materializa seis skills
-portáteis em `.agents/skills/`; cada executor ainda precisa descobri-las no próprio
-runtime. Skills pessoais, ferramentas nativas, permissões e memória privada continuam
-capacidades distintas e não são transferidas entre Codex e Antigravity.
+históricos só entram quando citados pelo manifesto. O Organizer materializa sete skills
+portáteis em `.agents/skills/` com paridade instalada no catálogo do Codex; cada executor
+as descobre em seu próprio runtime. Skills pessoais, ferramentas nativas, permissões e
+memória privada continuam capacidades distintas e não são transferidas entre Codex e Antigravity.
 
 Cada canário deve devolver caminhos relativos, hashes dos documentos exigidos e duas
 afirmações sentinela definidas pelo teste. Isso prova leitura do mesmo material, não

@@ -35,6 +35,8 @@ tokens*.json
 logs/
 tmp/
 temp/
+runtime/
+.codex-docx-work/
 *.tmp
 *.temp
 *.bak

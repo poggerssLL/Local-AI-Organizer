@@ -28,23 +28,23 @@ projeto. Resolva ao vivo o caminho e o baseline; não salve IDs de runtime neste
 
 ## Perfil de execução
 
-Antes de criar a tarefa, recomende e justifique:
+Antes de criar a tarefa, consulte a skill `model-router-advisor` e recomende:
 
-- executor: `[CODEX | ANTIGRAVITY | OUTRO DISPONÍVEL]`;
-- modelo: `[MODELO DISPONÍVEL NO EXECUTOR]`;
-- esforço: `[NÍVEL COMPATÍVEL COM O MODELO]`;
-- perfil de contexto: `[MANIFESTO E DOCUMENTOS OBRIGATÓRIOS]`;
+- perfil oficial: `[organizer-codex-luna | organizer-codex-economy | organizer-codex-strong | organizer-codex-astra | organizer-gemini-economy | organizer-gemini-strong | organizer-claude-sonnet | organizer-claude-opus | organizer-gpt-oss]`;
+- executor: `[CODEX | ANTIGRAVITY]`;
+- modelo: `[MODELO EXATO CONFORME O PERFIL]`;
+- esforço: `[LOW | MEDIUM | HIGH | EXTREME]`;
+- perfil de contexto: `[organizer-core-v1 | OUTRO AUTORIZADO]`;
 - fallback: `[NONE POR PADRÃO | POLÍTICA NOMINAL AUTORIZADA]`;
-- motivo: `[COMPLEXIDADE, RISCO E CUSTO DE RETRABALHO]`;
-- alternativa econômica: `[PERFIL OU NÃO RECOMENDADA]`;
-- gatilho de escalada: `[CONDIÇÃO OBJETIVA]`;
-- limitações: `[DISPONIBILIDADE OU CONSUMO DESCONHECIDO]`.
+- motivo: `[COMPLEXIDADE, ESTADO DE COTAS SEMANAIS E RISCO DE RETRABALHO]`;
+- alternativa econômica: `[PERFIL SECUNDÁRIO OU NÃO RECOMENDADA]`;
+- gatilho de escalada: `[CONDIÇÃO OBJETIVA; ASTRA REQUER JUSTIFICATIVA EXPLÍCITA]`;
+- limitações: `[DISPONIBILIDADE OU CONSUMO DE COTA DESCONHECIDO]`.
 
-Consulte a disponibilidade real no momento da delegação. Não trate preços da API como
-equivalentes ao consumo dos limites do aplicativo Codex e não prometa economia de tokens.
-Não substitua silenciosamente executor, modelo ou esforço. Uma troca entre provedores deve
-encerrar o worker anterior, verificar o checkout e fornecer um pacote de passagem
-sanitizado à nova sessão.
+A delegação é estritamente **bidirecional e simétrica**: o prompt pode ser gerado e
+disparado a partir de uma sessão no Codex ou no Antigravity. Não substitua
+silenciosamente executor, modelo ou esforço. Uma troca entre provedores exige encerrar o
+worker anterior, verificar o checkout e fornecer um pacote de passagem sanitizado.
 
 ## Prompt-base
 

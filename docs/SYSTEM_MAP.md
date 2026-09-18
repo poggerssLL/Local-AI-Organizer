@@ -37,31 +37,35 @@ componentes já estejam conectados.
 - não implementa silenciosamente trabalho em projetos irmãos.
 
 Como camada operacional, o Organizer disponibiliza perfis explícitos de execução
-materializados em `docs/orca-model-routing-profiles.json` e registrados no Orca como Quick
-Commands escopados ao repositório:
+materializados em `docs/orca-model-routing-profiles.json` (9 perfis cobrindo OpenAI no
+Codex e Google Pro AI no Antigravity) e registrados no Orca como Quick Commands:
 
 ```text
-Erick escolhe um perfil nos Quick Commands do Orca
+Erick escolhe um perfil nos Quick Commands do Orca ou sessão ativa (Codex ou Antigravity)
   -> Organizer fixa projeto, executor, modelo, esforço, contexto e permissões
-  -> Orca inicia um único worker de um executor aprovado
+  -> Skill model-router-advisor avalia tarefa, cotas e indica o executor/modelo ideal
+  -> Orca ou coordenador inicia um único worker de um executor aprovado
   -> worker lê o contexto versionado e devolve evidências
-  -> Organizer revisa o gate
+  -> Organizer revisa o gate de evidências
 ```
 
-A troca entre executores ocorre entre execuções, nunca como substituição silenciosa no
-meio de uma escrita. A memória comum pertence aos documentos versionados e ao pacote de
-passagem; não à conversa privada de um provedor.
+A delegação é **bidirecional e simétrica**: uma sessão no Codex pode delegar para modelos do
+Codex ou do Antigravity, e uma sessão no Antigravity pode delegar para modelos do
+Antigravity ou do Codex. A troca entre executores ocorre entre execuções, nunca como
+substituição silenciosa no meio de uma escrita. A memória comum pertence aos documentos
+versionados e ao pacote de passagem; não à conversa privada de um provedor.
 
 ```text
-Executor aprovado
-  -> expõe um catálogo de modelos
+Executor aprovado (Codex ou Antigravity)
+  -> expõe um catálogo de modelos reais (OpenAI: Luna, Terra, Sol, Astra; Google Pro: Gemini, Claude, GPT-OSS)
   -> um perfil materializado fixa exatamente um modelo e esforço
-  -> um adaptador do Orca inicia, observa e cancela o processo
+  -> um adaptador ou operador inicia, observa e cancela o processo
 ```
 
-No estado atual, Codex e Antigravity são os executores materializados. Gemini, Claude e
-GPT-OSS podem ser famílias de modelo do Antigravity. Novos executores, CLIs locais ou
-provedores de API entram somente após contrato e canário próprios.
+No estado atual, Codex e Antigravity são os executores materializados e simétricos.
+Gemini, Claude e GPT-OSS são modelos do Antigravity via Google Pro AI; Luna, Terra, Sol e
+Astra são modelos do Codex via OpenAI. Novos executores, CLIs locais ou provedores de API
+entram somente após contrato e canário próprios.
 
 O antigo RAG de estudos não faz parte do organizador. Materiais e dados pessoais locais
 remanescentes não devem ser tratados como contexto compartilhado do portfólio.

@@ -67,12 +67,14 @@ entrega por vez e só avance depois de revisar o resultado anterior.
     A materialização, a descoberta pelo runtime e o canário somente leitura
     (`local-project-orientation`) foram executados e aprovados no Antigravity em 2026-09-18
     sem mutações no Git.
-16. **Próximo, sujeito a gate explícito:** antes de qualquer operação em projetos reais, definir
+16. **Concluído:** criar a sétima skill `model-router-advisor`, garantindo descoberta dual
+    no Antigravity e no catálogo do Codex (`%USERPROFILE%\.codex\skills\`); materializar o
+    catálogo unificado de 9 perfis em `docs/orca-model-routing-profiles.json` cobrindo
+    OpenAI (Luna, Terra, Sol, Astra) e Google Pro AI (Gemini Flash Med/High, Claude Sonnet,
+    Claude Opus, GPT-OSS) e formalizar a governança de delegação bidirecional e simétrica.
+17. **Próximo, sujeito a gate explícito:** antes de qualquer operação em projetos reais, definir
     e validar o fluxo de execução interativa com PTY no Orca ou pacote de passagem assistido para
     tarefas de codificação multi-turnos, mantendo projetos reais sob bloqueio até novo gate.
-17. **Planejado após o gate dos executores atuais:** inventariar e materializar, um por
-    vez, perfis Antigravity para Claude Opus, Claude Sonnet e GPT-OSS, usando os IDs e
-    esforços retornados pelo catálogo real e canário sintético para cada perfil.
 18. **Planejado posteriormente:** permitir novos executores além de Codex e Antigravity
     por um contrato de adaptador versionado. Cada executor terá descoberta, permissões,
     inicialização, retomada, cancelamento, evidências e gate próprios.

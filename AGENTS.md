@@ -125,12 +125,12 @@ revalidados no projeto correspondente antes de serem tratados como atuais.
 
 ## Skills portateis do Organizer
 
-- As skills compartilhadas deste projeto ficam em `.agents/skills/<nome>/SKILL.md` e
-  devem permanecer compativeis com executores que implementem esse formato.
-- A existencia do arquivo nao comprova descoberta. Cada executor deve listar ou carregar
-  a skill no proprio runtime antes que ela seja citada como disponivel. Erick informou em
-  2026-09-18 que as seis skills aparecem no Antigravity; o canario comportamental ainda
-  permanece pendente.
+- As skills compartilhadas deste projeto ficam em `.agents/skills/<nome>/SKILL.md` (7
+  skills de coordenação) e possuem paridade instalada no catálogo do Codex
+  (`%USERPROFILE%\.codex\skills\`).
+- A descoberta e o canário somente leitura de `local-project-orientation` foram validados
+  com sucesso no Antigravity em 2026-09-18, e a skill `model-router-advisor` provê a
+  seleção determinística entre os modelos de OpenAI e Google Pro AI.
 - Recursos auxiliares ficam dentro da pasta da propria skill e devem usar caminhos
   relativos. Nao referencie diretorios pessoais de configuracao de outro executor.
 - Ao portar ou atualizar uma skill, preserve autorizacao, parada, um escritor por

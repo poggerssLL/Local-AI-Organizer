@@ -139,16 +139,25 @@ sessões existentes; bypasses e acesso fora do workspace continuam proibidos.
 
 ## Roteamento de executor, modelo e esforço
 
-O Organizer pode preparar perfis para Codex, Antigravity e futuros executores aprovados,
-mas cada execução deve fixar explicitamente `executor`, `provedor`, `modelo`, `esforço`,
-`perfil de contexto` e `fallback`. O Orca continua sendo a camada de lançamento e
-acompanhamento; ele não escolhe sozinho qual provedor deve consumir a tarefa.
+O Organizer opera sob **delegação bidirecional e simétrica** entre Codex (OpenAI) e
+Antigravity (Google Pro AI). Cada execução deve fixar explicitamente `executor`,
+`modelo`, `esforço`, `perfil de contexto` e `fallback: none`.
+
+A orquestração pode se originar no Codex ou no Antigravity e direcionar o trabalho para
+qualquer um dos 9 perfis materializados em `docs/orca-model-routing-profiles.json`.
 
 Regras obrigatórias:
 
+- **Simetria Operacional:** Uma sessão no Codex pode delegar para modelos do Codex
+  (`gpt-5.6-luna`, `terra`, `sol`, `astra`) ou do Antigravity (`gemini-3.8-flash`,
+  `claude-sonnet-4-6`, `claude-opus-4-6-thinking`, `gpt-oss-120b-medium`), e vice-versa;
+- **Gestão de Cotas Semanais:** As cotas do Codex reiniciam semanalmente na segunda-feira.
+  Quando a cota estiver esgotada, em fins de semana ou por preferência de preservação, a
+  delegação redireciona prioritariamente para Antigravity (Claude Sonnet para código e
+  Claude Opus para arquitetura), retornando ao Codex nos dias úteis com cota plena;
+- **Guardião do GPT-5.6 Astra:** O modelo Astra é restrito a **exceções ultra-específicas**
+  de impasses lógicos/arquiteturais extremos onde Sol e Opus falharem comprovadamente;
 - preferência explícita de Erick prevalece quando o perfil existir e estiver disponível;
-- modelo e executor são dimensões separadas: Claude, Gemini ou GPT-OSS expostos pelo
-  Antigravity continuam usando o executor `antigravity`;
 - disponibilidade deve ser consultada no executor no momento da execução;
 - modelo desconhecido, incompatível ou indisponível encerra o lançamento com erro claro;
 - `fallback: none` é o padrão; fallback automático exige autorização nominal e nunca
@@ -161,24 +170,23 @@ Regras obrigatórias:
   envelope;
 - perfis devem ser locais ao projeto ou à execução. Argumentos globais persistentes são
   proibidos até revisão separada;
-- um novo modelo no executor existente exige perfil e canário próprios; um novo executor
-  exige também adaptador de lançamento, cancelamento, permissões e evidências;
 - consumo e limites pertencem ao provedor efetivamente usado e devem ser registrados
   quando observáveis, sem equiparar assinatura de aplicativo a cobrança de API.
 
-### Expansão planejada
+### Catálogo Unificado e Especialidades
 
-1. concluir o canário comportamental das skills portáteis no Antigravity;
-2. homologar o fluxo interativo PTY ou handoff assistido entre os executores atuais;
-3. inventariar no catálogo real do Antigravity os identificadores e esforços de Claude
-   Opus, Claude Sonnet e GPT-OSS, sem criar perfis por nomes presumidos;
-4. materializar e validar um perfil adicional por vez em ambiente sintético;
-5. definir um contrato de adaptador antes de incluir qualquer terceiro executor ou CLI;
-6. avaliar OpenRouter separadamente, com decisão explícita sobre API key, cobrança,
-   retenção, dados enviados e fallback.
+1. `organizer-codex-luna` (Codex / `gpt-5.6-luna` / `low`): tarefas mecânicas e templates;
+2. `organizer-codex-economy` (Codex / `gpt-5.6-terra` / `medium`): implementação balanceada;
+3. `organizer-codex-strong` (Codex / `gpt-5.6-sol` / `high`): subsistemas complexos;
+4. `organizer-codex-astra` (Codex / `gpt-5.6-astra` / `extreme`): exceções críticas extremas;
+5. `organizer-gemini-economy` (Antigravity / `gemini-3.8-flash-medium` / `medium`): coordenação ágil;
+6. `organizer-gemini-strong` (Antigravity / `gemini-3.8-flash-high` / `high`): síntese densa;
+7. `organizer-claude-sonnet` (Antigravity / `claude-sonnet-4-6` / `high`): código e testes de elite;
+8. `organizer-claude-opus` (Antigravity / `claude-opus-4-6-thinking` / `high`): arquitetura e gates;
+9. `organizer-gpt-oss` (Antigravity / `gpt-oss-120b-medium` / `medium`): auditoria aberta.
 
-Nenhum item futuro autoriza instalação, login, credenciais, cobrança, API em nuvem ou
-operação em projeto real.
+Nenhum item autoriza instalação, login, credenciais, cobrança, API em nuvem ou operação em
+projeto real sem novo gate explícito.
 
 O contexto comum usa um manifesto versionado: `AGENTS.md`, documentos centrais
 obrigatórios, documentação viva do projeto alvo e somente os relatórios históricos
@@ -201,23 +209,24 @@ validação interativa via PTY no Orca. Projetos reais permanecem categoricament
 
 O coordenador deve preferir skills do repositório para protocolos compartilhados por
 Codex e Antigravity e skills pessoais para procedimentos exclusivos de um executor. As
-seis skills do Organizer foram materializadas em `.agents/skills/` no formato portátil de
-workspace em 2026-09-18. A menção explícita no prompt é preferível em etapas críticas.
+sete skills do Organizer estão materializadas em `.agents/skills/` no formato portátil de
+workspace e sincronizadas em `%USERPROFILE%\.codex\skills\` para o catálogo do Codex.
 
-Materialização não equivale a descoberta. Erick informou em 2026-09-18 que as seis skills
-aparecem em `/skills` no Antigravity; isso confirma a descoberta segundo relato do
-usuário, mas não substitui o canário comportamental somente leitura.
+A descoberta e o canário somente leitura de `local-project-orientation` foram validados
+com sucesso no Antigravity em 2026-09-18, e a paridade de instalação no Codex foi
+confirmada no catálogo de usuário.
 
-Coleção planejada, criada uma por vez:
+Coleção das 7 skills de coordenação:
 
-| Skill | Função | Estado portátil em 2026-09-18 |
+| Skill | Função | Estado de Descoberta e Validação |
 | --- | --- | --- |
-| `local-project-orientation` | Confirmar projeto, raiz, instruções e estado inicial | Materializada; descoberta no Antigravity informada por Erick; canário pendente |
-| `phase-gate-reviewer` | Aprovar, bloquear ou pedir complemento de uma etapa | Materializada; descoberta no Antigravity informada por Erick; canário pendente |
-| `implementation-prompt-builder` | Gerar prompt e recomendar executor, modelo e esforço | Materializada; descoberta no Antigravity informada por Erick; canário pendente |
-| `local-ai-release-review` | Revisar higiene, documentação, commit e publicação | Materializada; descoberta no Antigravity informada por Erick; canário pendente |
-| `local-project-coordinator` | Priorizar o portfólio, escolher perfil e coordenar uma tarefa por vez | Materializada; descoberta no Antigravity informada por Erick; canário pendente |
-| `local-integration-architect` | Projetar contratos seguros entre projetos, orquestradores e agentes | Materializada; descoberta no Antigravity informada por Erick; canário pendente |
+| `local-project-orientation` | Confirmar projeto, raiz, instruções e baseline | Descoberta e canário aprovados no Antigravity; instalada no Codex |
+| `phase-gate-reviewer` | Aprovar, bloquear ou pedir complemento de uma etapa | Descoberta no Antigravity e no Codex; canário aprovado no Codex |
+| `implementation-prompt-builder` | Gerar prompt delimitado para o executor alvo | Descoberta no Antigravity e no Codex; canário aprovado no Codex |
+| `local-ai-release-review` | Revisar higiene, documentação, commit e publicação | Descoberta no Antigravity e no Codex; canário aprovado no Codex |
+| `local-project-coordinator` | Priorizar o portfólio e coordenar tarefas | Descoberta no Antigravity e no Codex; testada no Codex |
+| `local-integration-architect` | Projetar contratos seguros entre sistemas e agentes | Descoberta no Antigravity e no Codex; testada no Codex |
+| `model-router-advisor` | Selecionar executor, modelo e esforço por cota e tipo | Materializada em `.agents/skills/` e instalada no Codex |
 
 A ausência dessas skills não impede a delegação: o coordenador pode seguir esta política e
 o modelo de prompt manualmente. As skills operacionalizam o envelope concedido por Erick,

@@ -59,11 +59,11 @@ opcional e separado por envolver API, credencial, custo e envio de dados à nuve
 - `local-project-coordinator`: coordena autorização, projeto, prompt, perfil de execução,
   workers e gate, inclusive em envelope autônomo delimitado;
 - `local-integration-architect`: projeta contratos, permissões e gates entre projetos,
-  orquestradores e agentes.
+  orquestradores e agentes;
+- `model-router-advisor`: analisa tarefas e cotas para recomendar o melhor modelo e
+  executor (Codex ou Antigravity).
 
-As seis skills possuem agora versões portáteis e versionáveis em `.agents/skills/`, no
-formato de workspace aceito pelo Antigravity. Erick informou em 2026-09-18 que as seis
-entradas já aparecem em `/skills`; ainda falta o canário comportamental somente leitura.
-Skills pessoais externas podem continuar existindo, mas não devem ser
-presumidas como compartilhadas. Nenhuma skill amplia autorização nem concede instalação,
-delegação, commit ou push.
+As sete skills possuem versões portáteis e versionáveis em `.agents/skills/`, e paridade
+instalada no catálogo do Codex (`%USERPROFILE%\.codex\skills\`). O canário somente leitura
+de orientação foi aprovado com sucesso no Antigravity em 2026-09-18. Nenhuma skill amplia
+autorização nem concede instalação, delegação, commit ou push.
