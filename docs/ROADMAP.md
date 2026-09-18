@@ -97,10 +97,10 @@ entrega por vez e só avance depois de revisar o resultado anterior.
 
 ## Local Transcriber
 
-1. Receber o resultado final da Etapa 7B.
-2. Revisar a instalação, a validação CUDA real, o fallback em CPU, a documentação e o Git.
-3. Corrigir na mesma tarefa qualquer bloqueador da 7B.
-4. Considerar o MVP local encerrado depois da aprovação.
+1. **Concluído:** receber o resultado final da Etapa 7B (commit `a81bf8c`, versão 0.7.1, schema v4).
+2. **Concluído:** revisar a instalação, a validação CUDA real (`config check` com 1 GPU e compute types ativos), o fallback em CPU, a documentação e o Git (working tree limpa, 115 testes aprovados e Ruff sem violações).
+3. **Concluído:** sem bloqueadores pendentes na 7B.
+4. **Concluído:** MVP local formalmente aprovado e encerrado.
 5. Postergar as Etapas 8A e 8B de processamento remoto enquanto o uso local atender Erick.
 6. Avaliar separadamente uma extensão de resumos locais, preservando a transcrição
    original e registrando a proveniência do conteúdo gerado.
