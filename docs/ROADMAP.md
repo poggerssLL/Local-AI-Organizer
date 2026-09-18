@@ -72,13 +72,21 @@ entrega por vez e só avance depois de revisar o resultado anterior.
     catálogo unificado de 9 perfis em `docs/orca-model-routing-profiles.json` cobrindo
     OpenAI (Luna, Terra, Sol, Astra) e Google Pro AI (Gemini Flash Med/High, Claude Sonnet,
     Claude Opus, GPT-OSS) e formalizar a governança de delegação bidirecional e simétrica.
-17. **Próximo, sujeito a gate explícito:** antes de qualquer operação em projetos reais, definir
-    e validar o fluxo de execução interativa com PTY no Orca ou pacote de passagem assistido para
-    tarefas de codificação multi-turnos, mantendo projetos reais sob bloqueio até novo gate.
-18. **Planejado posteriormente:** permitir novos executores além de Codex e Antigravity
+17. **Concluído no escopo sintético:** formalizado o contrato do pacote de passagem
+    (`orca-handoff/v1` em `docs/ORCA_HANDOFF_CONTRACT.md`) e comprovado no canário sintético
+    de 2026-09-18 (`docs/PHASE_ORCA_PTY_HANDOFF_2026-09-18.md`) o consumo pelo Codex de
+    payload gerado pelo Antigravity, com invocação comprovada de ferramenta de leitura sob
+    `windows.sandbox=unelevated`, citação de sentinela obrigatória, validação de hashes e
+    ciclo de vida ConPTY no Orca ADE (`ptyKilled: true`). Projetos reais permanecem
+    bloqueados até novo gate explícito.
+18. **Próximo, sujeito a gate explícito:** antes de qualquer operação em projetos reais,
+    receber e revisar o resultado da Etapa 7B de CUDA do `Local Transcriber` ou autorizar
+    a criação da fundação e política de segurança do `Local File Agent` em repositório
+    separado.
+19. **Planejado posteriormente:** permitir novos executores além de Codex e Antigravity
     por um contrato de adaptador versionado. Cada executor terá descoberta, permissões,
     inicialização, retomada, cancelamento, evidências e gate próprios.
-19. **Opcional e separado:** avaliar OpenRouter somente após decisão explícita sobre API,
+20. **Opcional e separado:** avaliar OpenRouter somente após decisão explícita sobre API,
     credencial, custo, privacidade, retenção e dados permitidos. Não confundir esse
     provedor em nuvem com os benefícios incluídos na assinatura de aplicativos.
 
@@ -135,8 +143,11 @@ quiser explicitamente usar outra máquina.
 
 ## Próximo marco
 
-Com o canário de orientação aprovado no Antigravity sem mutações no Git, o próximo marco
-volta a ser a validação da operação interativa via terminal PTY no Orca ou a estruturação
-do pacote de passagem assistido para tarefas multi-turnos. A ampliação para Claude, GPT-OSS
-e novos executores ocorre somente depois desses gates e um perfil por vez. Até a
-homologação formal, nenhum projeto real está liberado para operação pelo Orca.
+Com o canário interativo PTY e o pacote de passagem formalmente comprovados no escopo
+sintético sem resíduos ou processos órfãos, a fundação de coordenação e orquestração do
+`Local AI Organizer` encontra-se plenamente estabilizada. O próximo passo do portfólio
+volta-se para os projetos de domínio: aguardar a entrega da Etapa 7B de CUDA no `Local
+Transcriber` para revisão, ou aprovar o início do `Local File Agent` em repositório
+separado. Como opção paralela de pesquisa, permanece disponível a modelagem do adaptador
+OpenRouter em ambiente sintético. Projetos reais continuam bloqueados para escrita pelo
+Orca até homologação em cada caso.
