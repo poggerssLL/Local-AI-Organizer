@@ -39,19 +39,19 @@ revalidados no projeto correspondente antes de serem tratados como atuais.
 - Inclua explicitamente no prompt delegado as skills relevantes que estejam disponiveis
   para a tarefa. Uma referencia a uma skill inexistente nao autoriza instala-la.
 - Use tarefas separadas do Codex para implementacoes em repositorios diferentes.
-- **Nao monopolizacao do coordenador:** O coordenador nao deve monopolizar toda a execucao
-  de tarefas na mesma janela de chat, acumulando buscas extensas, redacoes volumosas ou
-  testes iterativos de forma isolada, salvo necessidade tecnica incontornavel (ausencia de
-  ferramenta de subagentes no executor ativo ou operacao estritamente indivisivel de 1 passo).
-- **Despacho ativo de subagentes:** Salvo impedimento tecnico, acione ativamente subagentes
-  (via `invoke_subagent`, workers paralelos ou chamadas de modelo dedicadas) para pesquisa,
-  mapeamento de codigo, redacao tecnica, suites de teste, diagnosticos e auditoria de gates.
-- **Transparencia de proveniencia:** Toda resposta e relatorio deve distinguir claramente o
-  que foi executado por subagentes paralelos despachados e o que foi realizado diretamente
-  pelo coordenador, justificando quando a execucao direta for adotada.
+- **Mandato simetrico de delegacao (Codex e Antigravity):** Tanto no Antigravity quanto no
+  Codex, o executor que estiver atuando como coordenador nao deve trabalhar de forma solitaria
+  ou monobloco. E obrigatorio decompor qualquer tarefa tecnica em papeis especializados e
+  despachar ativamente subagentes ou workers secundarios (arquitetura/contratos, implementacao,
+  testes/QA e auditoria/gates), reservando a execucao direta na janela principal apenas para
+  operacoes triviais indivisiveis de 1 passo.
+- **Despacho efetivo vs. creditamento falso:** O coordenador nunca deve creditar nominalmente
+  outros modelos ou agentes em relatorios a menos que eles tenham sido concretamente despachados
+  via ferramentas nativas (`invoke_subagent`), chamadas reais de API ou workers assincronos
+  isolados. Relate com rigor factual o que foi delegado e o que foi feito diretamente.
 - **Regra petrea de 1 escritor por checkout:** Subagentes paralelos operam em modo somente
   leitura ou em worktrees/pastas descartaveis isoladas. Nunca use subagentes para escritas
-  concorrentes no mesmo checkout.
+  concorrentes no mesmo checkout. O coordenador integra os resultados de forma sequencial.
 - O coordenador pode acompanhar e revisar resultados, mas nunca deve declarar sucesso
   apenas porque a tarefa terminou. Exija evidencias proporcionais ao risco.
 - Nunca mantenha duas tarefas modificando simultaneamente o mesmo checkout.

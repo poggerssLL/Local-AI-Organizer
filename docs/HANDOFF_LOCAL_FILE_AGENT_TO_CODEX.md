@@ -88,5 +88,6 @@ Regras Invioláveis:
 - Nenhuma modificação, deleção ou movimentação de arquivos reais do sistema operacional;
 - Modo somente leitura por padrão;
 - Mantenha 100% de confinamento ao diretório de testes sintéticos;
+- Mandato de Delegação Ativa: Como coordenador, decomponha o trabalho e acione ativamente workers/subagentes especializados, registrando a proveniência no relatório;
 - Não execute git push sem aprovação nominal expressa de Erick.
 ```

@@ -91,7 +91,9 @@ Envelope de execução autônoma:
 - pare e solicite Erick apenas em: [EVENTOS FORA DO ENVELOPE].
 - use conectores, APIs, terminal e arquivos antes de qualquer interface visual;
 - quando uma GUI for necessária, forneça a Erick instruções curtas e verificáveis;
-- controle de teclado e mouse: [PROIBIDO POR PADRÃO | EXCEÇÃO EXPLÍCITA E DELIMITADA].
+- controle de teclado e mouse: [PROIBIDO POR PADRÃO | EXCEÇÃO EXPLÍCITA E DELIMITADA];
+- delegação ativa obrigatória: o executor coordenador deve decompor a entrega e acionar ativamente subagentes/workers (arquitetura/contratos, código, testes/mocks e auditoria de gate); não execute tarefas complexas de forma monobloco ou solitária;
+- transparência de proveniência: o relatório final deve registrar com precisão quem executou o quê (subagentes despachados vs. ações pontuais do coordenador);
 - em ambiente descartável, o coordenador pode reconstruir fixtures, fixar o cwd e usar
   allowlists mínimas; são proibidos curingas globais, bypass e acesso fora do workspace.
 
