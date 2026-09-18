@@ -14,6 +14,7 @@ htmlcov/
 # Configuração local e credenciais
 .env
 .env.*
+*.env
 !.env.example
 credentials.json
 credentials*.json

@@ -86,9 +86,14 @@ entrega por vez e só avance depois de revisar o resultado anterior.
 19. **Planejado posteriormente:** permitir novos executores além de Codex e Antigravity
     por um contrato de adaptador versionado. Cada executor terá descoberta, permissões,
     inicialização, retomada, cancelamento, evidências e gate próprios.
-20. **Opcional e separado:** avaliar OpenRouter somente após decisão explícita sobre API,
-    credencial, custo, privacidade, retenção e dados permitidos. Não confundir esse
-    provedor em nuvem com os benefícios incluídos na assinatura de aplicativos.
+20. **Concluído no escopo de adaptador e testes ao vivo:** formalizado o contrato de
+    integração (`docs/OPENROUTER_INTEGRATION_CONTRACT.md`), implementado o cliente em
+    Python puro (`src/adapters/openrouter_client.py`) com salvaguarda ativa de privacidade
+    contra caminhos locais, suíte de 4 testes unitários automatizados, descoberta dinâmica
+    de 25 modelos gratuitos e validação real comprovada com `qwen/qwen3.8-27b:free`.
+    O catálogo de 5 usos automatizados futuros foi documentado em
+    `docs/GUIA_E_FUTUROS_USOS_OPENROUTER.md`, mantendo a regra de que dados pessoais e
+    áudios reais permanecem estritamente bloqueados para envio à nuvem.
 
 ## Local Transcriber
 
