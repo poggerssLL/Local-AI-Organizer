@@ -87,22 +87,50 @@ repete dentro do limite do envelope; não amplia a fronteira.
 
 ## Tarefas separadas e subagentes
 
-Use uma **tarefa separada do Codex** quando:
+O modelo de orquestração do Organizer rejeita o agente centralizador que monopoliza o contexto da conversa. O coordenador opera como arquiteto e orquestrador de fluxo, delegando o esforço cognitivo e operacional para workers e subagentes especializados.
 
-- o trabalho pertence a outro projeto;
-- haverá implementação, commit ou publicação;
-- o resultado precisa permanecer visível e retomável por Erick;
-- o projeto alvo possui instruções ou skills próprias.
+### Critérios de separação: Tarefa externa vs. Subagente interno
 
-Use **subagentes dentro da tarefa atual** somente quando:
+Use uma **tarefa separada do Codex / Antigravity** quando:
+- o trabalho pertencer a outro repositório ou projeto;
+- houver implementação profunda com commits independentes e ciclo de vida próprio;
+- o resultado precisar permanecer com histórico autônomo, rastreável e retomável por Erick;
+- o projeto de destino demandar descoberta de skills e configuração isolada de ambiente.
 
-- as subtarefas são independentes e delimitadas;
-- a delegação melhora uma análise, pesquisa, inspeção ou teste;
-- os agentes não modificarão simultaneamente o mesmo checkout;
-- o resultado será reunido pelo agente principal.
+Use **subagentes dentro da tarefa atual** para decompor e paralelizar o plano de trabalho, respeitando as cláusulas de não monopolização.
 
-Não use subagentes como substitutos de tarefas persistentes entre projetos. Fluxos com
-subagentes podem consumir mais tokens e aumentar conflitos quando há escrita paralela.
+### Política de Não Monopolização da Janela de Coordenação
+
+1. **Vedação de execução monobloco:** É expressamente vedado ao coordenador executar sequencialmente na janela principal rotinas pesadas de busca textual, leitura massiva de código, redação de peças extensas, testes repetitivos ou depuração de erros que possam ser isoladas.
+2. **Exceções técnicas admitidas:** A atuação direta monobloco do coordenador é admitida apenas quando:
+   - O ambiente do executor corrente não disponibilizar primitivas de despacho (ex.: indisponibilidade transitória de subagentes ou ambiente sem suporte a workers em background);
+   - A operação for atômica, imediata (verificação direta de até 2 comandos) e a criação de subagente gerar overhead desproporcional de tokens e latência;
+   - Houver necessidade direta de alinhamento ou decisão de Erick antes de qualquer desdobramento.
+
+### Matriz Obrigatória de Despacho Ativo
+
+O coordenador deve acionar ativamente subagentes (via `invoke_subagent`, workers assíncronos ou integrações de API) nas seguintes áreas:
+
+| Domínio da Atividade | Tipo de Despacho Obrigatório | Função do Subagente |
+| --- | --- | --- |
+| **Pesquisa e Exploração** | Subagente `research` / leitor | Investigar bases de código, logs, documentação externa e APIs sem poluir o histórico principal |
+| **Redação e Documentação** | Subagente redator / técnico | Elaborar minutas de arquitetura, manuais, especificações e relatórios de fase |
+| **Implementação e Mocks** | Subagente executor / tester | Construir suítes de teste, fixtures, mocks determinísticos e scripts de validação |
+| **Auditoria e Conformidade** | Subagente auditor / gatekeeper | Verificar conformidade com políticas, checar vazamento de credenciais e validar gates |
+| **Rotinas e Validação** | Worker em background | Rodar testes de regressão, lint, compilação e benchmarks de desempenho |
+
+### Transparência e Rastreabilidade de Proveniência (Provenance Tracking)
+
+Todo relatório de progresso ou conclusão de etapa deve conter registro explícito de proveniência:
+- **Despachado via Subagente:** Listar cada papel despachado (`role`), o objetivo da delegação e o resumo do artefato produzido.
+- **Execução Direta pelo Coordenador:** Listar as ações pontuais realizadas pelo coordenador na janela atual e registrar explicitamente o motivo da não delegação (ex.: *interação de canal único*, *bloqueio técnico de despacho*, ou *verificação atômica trivial*).
+- Nenhuma conclusão pode ser atribuída genericamente a outros agentes ou modelos sem que a trilha de despacho e execução efetiva fique clara e verificável para Erick.
+
+### Governança de Paralelismo: Estabilidade e Custos
+
+- **Regra Pétrea de 1 Escritor por Checkout:** O paralelismo nunca autoriza duas escritas simultâneas na mesma árvore Git. Subagentes simultâneos de escrita devem obrigatoriamente atuar em Git worktrees separados ou em diretórios temporários (`scratch`/fixtures). Para o mesmo checkout, apenas um agente possui autorização de escrita por vez.
+- **Racionalização de Consumo:** A criação de subagentes deve ter escopo delimitado e critério de parada claro. Subagentes recursivos infinitos ou disparos redundantes que consumam cotas desnecessárias de tokens são proibidos.
+- **Responsabilidade pela Consolidação:** O subagente produz o insumo técnico; cabe ao coordenador auditar o resultado contra os contratos e evidências antes de registrar o avanço em qualquer documento durável do projeto.
 
 ## Integração controlada com Orca ADE
 

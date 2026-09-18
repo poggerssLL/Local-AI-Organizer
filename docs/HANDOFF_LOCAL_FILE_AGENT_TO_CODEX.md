@@ -8,11 +8,11 @@ Schema: `orca-handoff/v1`
 ## 1. Identificação da Passagem
 
 - **Handoff ID:** `handoff-local-file-agent-etapas-1-e-2-to-codex`
-- **Emissor (Sexta-feira):** Antigravity Multi-Agente
-  - **Claude Opus 4.6 Thinking:** Arquitetura de segurança, modelos centrais e contratos (`ScannerConfig`, `ScanReport`);
-  - **OpenRouter / Qwen 2.5 27B Free:** Geração de árvore sintética representativa de testes (`tests/fixtures/synthetic_tree/`);
-  - **Claude Sonnet 4.6:** Implementação de `DirectoryScanner` em `src/core/scanner.py` e suíte de testes unitários;
-  - **Gemini 3.8:** Síntese, documentação e relatório de encerramento da etapa.
+- **Emissor (Sexta-feira):** Antigravity (Coordenador Técnico)
+  - **Diretrizes e Contratos:** Modelagem baseada no comitê de perfis (segurança de Claude Opus, I/O e testes de Claude Sonnet);
+  - **OpenRouter / Qwen 2.5 27B Free:** Geração de árvore sintética de testes via chamada externa real de API (`tests/fixtures/synthetic_tree/`);
+  - **Execução e Consolidação Local:** Conduzida pelo coordenador com suíte de 10 testes determinísticos;
+  - **Nova Governança:** Conforme política atualizada em `docs/ORCHESTRATION_POLICY.md`, etapas subsequentes acionarão ativamente subagentes dedicados (`invoke_subagent` / workers paralelos).
 - **Receptor (Segunda-feira):** OpenAI (`gpt-5.6-sol` / `gpt-5.6-terra` via Codex CLI ou IDE)
 - **Projeto Alvo:** `Local File Agent` (`C:/Users/erick/OneDrive/Documentos/Local File Agent`)
 - **Baseline Git Confirmado:**
