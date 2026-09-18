@@ -1,0 +1,50 @@
+[
+  {
+    "schema": "orca-model-routing/v1",
+    "profile_id": "organizer-codex-economy",
+    "project": "Local AI Organizer",
+    "executor": "codex",
+    "model": "gpt-5.6-terra",
+    "effort": "medium",
+    "context_profile": "organizer-core-v1",
+    "fallback": "none",
+    "permissions_profile": "manual-synthetic-readonly",
+    "single_writer": true
+  },
+  {
+    "schema": "orca-model-routing/v1",
+    "profile_id": "organizer-codex-strong",
+    "project": "Local AI Organizer",
+    "executor": "codex",
+    "model": "gpt-5.6-sol",
+    "effort": "high",
+    "context_profile": "organizer-core-v1",
+    "fallback": "none",
+    "permissions_profile": "manual-synthetic-readonly",
+    "single_writer": true
+  },
+  {
+    "schema": "orca-model-routing/v1",
+    "profile_id": "organizer-gemini-economy",
+    "project": "Local AI Organizer",
+    "executor": "antigravity",
+    "model": "gemini-3.8-flash-medium",
+    "effort": "medium",
+    "context_profile": "organizer-core-v1",
+    "fallback": "none",
+    "permissions_profile": "manual-synthetic-readonly",
+    "single_writer": true
+  },
+  {
+    "schema": "orca-model-routing/v1",
+    "profile_id": "organizer-gemini-strong",
+    "project": "Local AI Organizer",
+    "executor": "antigravity",
+    "model": "gemini-3.8-flash-high",
+    "effort": "high",
+    "context_profile": "organizer-core-v1",
+    "fallback": "none",
+    "permissions_profile": "manual-synthetic-readonly",
+    "single_writer": true
+  }
+]

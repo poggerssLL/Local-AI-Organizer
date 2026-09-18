@@ -1,6 +1,6 @@
 # Roadmap central
 
-Atualizado em: 2026-09-15.
+Atualizado em: 2026-09-18.
 
 ## Regra de sequência
 
@@ -21,10 +21,50 @@ entrega por vez e só avance depois de revisar o resultado anterior.
    recomendação justificada de modelo e esforço para cada nova tarefa.
 6. **Concluído:** confirmar a descoberta de `implementation-prompt-builder` e criar e
    validar a skill `local-ai-release-review`.
-7. **Próximo:** confirmar em novo chat a descoberta de `local-ai-release-review` e criar
-   `local-project-coordinator` depois que os fluxos básicos estiverem estáveis.
-8. Criar `local-integration-architect` somente quando dois projetos reais precisarem de
-   um contrato comum.
+7. **Concluído:** confirmar a descoberta de `local-ai-release-review`; criar, validar,
+   descobrir e testar funcionalmente `local-project-coordinator`, incluindo autorização,
+   seleção de modelo e esforço, delegação de uma única tarefa, acompanhamento e gate de
+   evidências.
+8. **Concluído:** criar e validar `local-integration-architect` para contratos entre
+   projetos, orquestradores e agentes; sua descoberta foi confirmada pelo uso em novo
+   chat em 2026-09-15.
+9. **Concluído:** ampliar `local-project-coordinator`, `local-integration-architect` e
+   `implementation-prompt-builder` com envelopes de execução autônoma e tornar obrigatória
+   a atualização do roadmap após marcos comprovados ou mudanças de necessidade.
+10. **Concluído no escopo sintético:** o piloto autônomo controlado do `Orca ADE`
+    confirmou, para Codex e Antigravity, leitura confinada, bloqueio de escrita no perfil
+    somente leitura, escrita reversível em worktree separado, restauração e cancelamento.
+    O segundo complemento do Antigravity resolveu o worktree no Windows com `cwd`
+    validado e `--new-project`, preservou hashes e Git e encerrou todos os terminais. A
+    conclusão não libera projeto real. A atualização automática observada de 1.2.4 para
+    1.2.5 e a recuperação necessária do detector de prontidão permanecem riscos de
+    integração a tratar em gate próprio.
+11. **Concluído:** estabelecer como padrão do portfólio a automação por conectores, APIs,
+    terminal e arquivos; etapas visuais são orientadas para Erick, e controle direto de
+    teclado e mouse exige autorização explícita e delimitada.
+12. **Concluído:** delegar ao Organizer autoridade operacional sobre a raiz temporária do
+    piloto, incluindo reconstrução de fixtures e worktrees, resolução do `cwd`, processos,
+    sandbox e allowlists mínimas, mantendo proibidos bypass, curingas globais e acesso a
+    projetos reais.
+13. **Concluído:** executar o segundo complemento com Antigravity no `cwd` absoluto do
+    worktree, usando caminhos relativos; comprovar leitura, bloqueio de escrita, escrita
+    reversível, restauração e cancelamento supervisionado sem bypass.
+14. **Concluído no escopo sintético (complemento da trilha Codex concluído):** os quatro
+    perfis de execução foram materializados (`docs/orca-model-routing-profiles.json`) e
+    vinculados ao repositório do Organizer no Orca via Quick Commands escopados (`<organizer-repo-id>`)
+    sem bypass global. O canário sintético Antigravity comprovou leitura confinada de sentinelas,
+    hashes, escrita reversível e cancelamento supervisionado pelo Orca (`PHASE_ORCA_MODEL_ROUTING_2026-09-17.md`).
+    O complemento de 2026-09-18 (`PHASE_ORCA_MODEL_ROUTING_COMPLEMENT_2026-09-18.md`) caracterizou
+    a causa do timeout em `hook: PreToolUse` no Codex CLI como tentativa de elevação de sandbox
+    no Windows em execução headless; com a flag `-c windows.sandbox=unelevated`, execuções completaram
+    com ExitCode 0 em ~18-19s sob sandbox read-only, com aviso `os error 183` confirmado como
+    não causal. Como a execução headless de turno único produziu apenas resposta conversacional
+    sem acionar ferramentas de leitura de arquivos, a leitura de sentinelas pelo Codex e o pacote de
+    passagem automatizado entre provedores permanecem explicitamente como ainda não validados.
+    Projetos reais continuam bloqueados.
+15. **Próximo, sujeito a gate explícito:** antes de qualquer operação em projetos reais, definir
+    e validar o fluxo de execução interativa com PTY no Orca ou pacote de passagem assistido para
+    tarefas de codificação multi-turnos, mantendo projetos reais sob bloqueio até novo gate.
 
 ## Local Transcriber
 
@@ -79,6 +119,10 @@ quiser explicitamente usar outra máquina.
 
 ## Próximo marco
 
-O próximo marco aplicável é confirmar a descoberta de `local-ai-release-review` em novo
-chat e, se estiver disponível, criar `local-project-coordinator`. Mantenha uma skill por
-vez e não antecipe `local-integration-architect`.
+O próximo marco é a validação da operação interativa via terminal PTY no Orca (utilizando os
+Quick Commands escopados já registrados) ou pacote de passagem assistido para tarefas de
+desenvolvimento multi-turnos. O complemento sintético de 2026-09-18 concluiu a estabilização do
+timeout do Codex no Windows sob `windows.sandbox=unelevated`, mas demonstrou que a invocação de
+ferramentas de leitura e o fluxo de handoff no Codex CLI dependem do canal interativo. Até que essa
+validação interativa seja homologada em gate próprio, nenhum projeto real está liberado para
+operação pelo Orca.

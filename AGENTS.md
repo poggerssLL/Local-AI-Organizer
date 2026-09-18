@@ -76,6 +76,66 @@ revalidados no projeto correspondente antes de serem tratados como atuais.
 - Se uma acao exigir nova autorizacao, escolha do usuario ou ampliacao material do escopo,
   pare e solicite a decisao em vez de presumir permissao.
 
+## Interacao com o computador
+
+- Nao priorize controle visual do computador, teclado ou mouse. Prefira, nesta ordem:
+  ferramentas especificas ou conectores, APIs, terminal e arquivos, e por fim orientacao
+  para que Erick execute a etapa visual.
+- Pedidos para implementar, executar ou agir de forma autonoma nao autorizam por si so o
+  controle direto da interface grafica. Essa capacidade exige pedido explicito no turno
+  atual ou inclusao nominal no envelope de execucao.
+- Quando instalacao, login, consentimento, UAC, selecao em interface ou outra acao visual
+  puder ser realizada por Erick, forneca instrucoes curtas, verificaveis e uma etapa por
+  vez. Depois, confirme o resultado por comando, arquivo, log ou estado observavel sempre
+  que possivel.
+- Nao use controle do computador apenas para observar telas, clicar em instaladores,
+  navegar por configuracoes ou repetir operacoes que tenham alternativa por terminal,
+  API ou arquivo de configuracao.
+- Se Erick autorizar explicitamente teclado e mouse, limite o uso ao aplicativo, objetivo
+  e duracao aprovados; nao digite credenciais e pare em login, pagamento, termos, UAC ou
+  decisao sensivel para que ele assuma.
+- Prompts delegados devem declarar `controle visual do computador: proibido` por padrao e
+  identificar separadamente qualquer excecao autorizada.
+
+## Selecao de executor e modelo
+
+- O Organizer deve tratar executor, modelo e esforco como campos explicitos de cada
+  execucao. Uma preferencia nominal de Erick prevalece quando estiver disponivel e for
+  compativel com o envelope aprovado.
+- Codex e Antigravity sao executores diferentes; trocar entre eles inicia uma nova sessao
+  e nao transfere implicitamente memoria de conversa, permissoes, skills ou estado oculto.
+- O contexto compartilhado deve vir de `AGENTS.md`, dos documentos obrigatorios, da
+  documentacao viva do projeto alvo e de um pacote de passagem sanitizado quando houver
+  troca de executor. Nao carregue todos os arquivos Markdown indiscriminadamente.
+- Nao substitua silenciosamente um executor ou modelo indisponivel. Pare com evidencia ou
+  use fallback somente quando Erick tiver aprovado uma politica nominal de fallback.
+- A troca de executor nunca amplia permissoes, libera outro projeto, autoriza duas escritas
+  concorrentes, nem concede commit, push, rede, credenciais ou controle visual.
+- Perfis do Orca devem ser especificos por projeto ou execucao. Nao persista argumentos
+  globais de modelo, `--new-project` ou qualquer bypass sem gate proprio e revisao do
+  impacto em outras sessoes.
+
+## Autoridade operacional em ambientes descartaveis
+
+- Quando Erick autorizar explicitamente um piloto sintetico ou ambiente descartavel, o
+  Organizer pode administrar autonomamente apenas a subarvore temporaria exata daquele
+  piloto: criar ou recriar repositorio e worktrees, enumerar conteudo, resolver caminhos,
+  definir o diretorio de trabalho, iniciar e encerrar processos e limpar artefatos que ele
+  proprio criou depois de verificar o alvo absoluto.
+- Pode inspecionar e ajustar configuracoes nao secretas do Orca e do executor, mantendo
+  backup, para fixar `cwd`, workspace, sandbox e regras de permissao estritamente
+  delimitadas ao ambiente sintetico.
+- Em execucao headless, pode aprovar previamente comandos locais necessarios ao teste por
+  allowlist especifica e auditavel. Prefira `proceed-in-sandbox` ou regras exatas; nunca
+  use `always-proceed`, `--dangerously-skip-permissions`, `command(*)`, acesso global a
+  arquivos ou `allowNonWorkspaceAccess` como atalho.
+- Pode confirmar hashes, Git e conteudo do fixture fora do worker. O worker deve receber o
+  `cwd` absoluto ja validado e usar caminhos relativos dentro dele.
+- Uma tentativa de acessar caminho externo nao autoriza ampliar o escopo. Interrompa o
+  worker, corrija a origem do `cwd` e repita somente dentro do limite de tentativas.
+- Essa autoridade nao alcanca projetos reais, perfil pessoal, credenciais, commit, push,
+  rede publica, administracao do sistema ou controle visual do computador.
+
 ## Identificacao do projeto correto
 
 - Antes de qualquer leitura tecnica ou alteracao, confirme o diretorio solicitado e a
@@ -85,8 +145,9 @@ revalidados no projeto correspondente antes de serem tratados como atuais.
 - O codigo historico do RAG de estudos foi retirado do escopo do repositorio. Dados
   pessoais locais remanescentes nao pertencem ao organizador e nao devem ser lidos,
   movidos ou excluidos sem autorizacao especifica.
-- O projeto ativo de transcricao fica em
-  `C:\Users\erick\OneDrive\Documentos\Local Transcriber` e e um repositorio separado.
+- O projeto ativo de transcricao e o `Local Transcriber`, um repositorio irmao separado do
+  `Local AI Organizer`. Sua raiz deve ser resolvida no momento da tarefa, sem persistir
+  caminho fisico.
 - Nunca trate `Local AI` e `Local Transcriber` como o mesmo repositorio.
 - Nao leia nem altere o repositorio irmao durante uma tarefa, salvo quando Erick o colocar
   explicitamente no escopo.
@@ -138,7 +199,9 @@ Ao criar um prompt de implementacao, inclua de forma objetiva:
 8. documentos que devem ser atualizados e relatorio historico que deve ser criado;
 9. regras para commit, push, arvore limpa e artefatos proibidos;
 10. condicao de parada antes da etapa seguinte;
-11. formato da resposta final, exigindo evidencias e limitacoes sem exageros.
+11. formato da resposta final, exigindo evidencias e limitacoes sem exageros;
+12. politica de interacao: priorizar terminal, arquivos e APIs, orientar Erick nas etapas
+    visuais e proibir controle direto de teclado e mouse salvo autorizacao expressa.
 
 O prompt deve instruir o outro chat a investigar antes de editar, preservar trabalho
 existente e nao declarar sucesso sem evidencia verificavel.

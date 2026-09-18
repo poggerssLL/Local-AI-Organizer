@@ -1,6 +1,6 @@
 # Registro central de projetos
 
-Atualizado em: 2026-09-15.
+Atualizado em: 2026-09-18.
 
 ## Finalidade
 
@@ -25,7 +25,7 @@ ação que realmente precisar deles.
 
 | Projeto | Papel | Estado conhecido | Próximo passo seguro |
 | --- | --- | --- | --- |
-| `Local AI Organizer` | Central de arquitetura, revisão e coordenação dos projetos locais | Confirmado neste repositório: o RAG histórico foi retirado; a documentação central está disponível; `local-project-orientation`, `phase-gate-reviewer` e `implementation-prompt-builder` foram descobertas; `local-ai-release-review` foi criada e validada, com descoberta em novo chat ainda pendente | Confirmar a descoberta de `local-ai-release-review` e depois criar `local-project-coordinator` |
+| `Local AI Organizer` | Central de arquitetura, revisão e coordenação dos projetos locais | Confirmado neste repositório: o RAG histórico foi retirado, a documentação central está disponível e as seis skills do fluxo foram descobertas; `local-project-coordinator` passou no teste funcional. O piloto sintético com Orca foi aprovado em 2026-09-17. Em 2026-09-18 (relatórios `PHASE_ORCA_MODEL_ROUTING_2026-09-17.md` e `PHASE_ORCA_MODEL_ROUTING_COMPLEMENT_2026-09-18.md`), os 4 perfis de execução foram materializados em `docs/orca-model-routing-profiles.json` e registrados como Quick Commands no Orca escopados ao repositório (`<organizer-repo-id>`), sem bypass global. O canário Antigravity comprovou leitura, escrita reversível e cancelamento. O complemento da trilha Codex elucidou a causa do timeout em `PreToolUse` (resolvido com `windows.sandbox=unelevated`, ExitCode 0 em ~18-19s) e confirmou que `os error 183` é aviso não causal. Em modo headless de turno único o Codex não acionou ferramentas de leitura; logo, leitura de sentinelas pelo Codex e handoff automatizado entre provedores permanecem explicitamente como ainda não validados. Projetos reais permanecem bloqueados | Manter projetos reais bloqueados; o próximo marco é a validação interativa via terminal PTY no Orca ou pacote de passagem assistido para tarefas multi-turnos |
 | `Local Transcriber` | Transcrição local e offline de gravações | Informado: Etapa 7 concluída; Etapa 7B de CUDA está em finalização por outra tarefa. O baseline final da 7B ainda não foi revisado aqui | Receber e revisar o resultado da 7B antes de planejar qualquer extensão |
 | `Local File Agent` | Inventário e organização segura de arquivos com aprovação humana | Planejado; ainda não constava como projeto local salvo na verificação de 2026-09-14 | Criar projeto e repositório separados; começar somente pela fundação e política de segurança |
 | `Jarvis Local` | Assistente local por voz, ferramentas permitidas e futura integração residencial | Planejado; projeto ainda não iniciado | Começar somente depois de o `Local File Agent` possuir uma base segura |
