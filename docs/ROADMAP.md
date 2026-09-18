@@ -109,9 +109,9 @@ entrega por vez e só avance depois de revisar o resultado anterior.
 
 Em desenvolvimento em repositório separado (`Local File Agent`):
 
-1. **Concluído:** fundação e política de segurança (commit `d7c3ab2`, 5 testes unitários aprovados, pacote de passagem para o Codex preparado);
-2. **Próximo (segunda-feira com Codex):** inventário somente leitura;
-3. hashes e duplicidades;
+1. **Concluído:** fundação e política de segurança (commit `d7c3ab2`, 5 testes unitários aprovados);
+2. **Concluído:** inventário somente leitura com `DirectoryScanner` e árvore sintética (commit `bcd8cac`, 10 testes unitários aprovados);
+3. **Próximo (segunda-feira com Codex):** hashes SHA-256 e detecção de duplicidades;
 4. classificação determinística;
 5. integração local com modelo usando saída estruturada;
 6. plano de operações;
