@@ -107,10 +107,10 @@ entrega por vez e só avance depois de revisar o resultado anterior.
 
 ## Local File Agent
 
-Iniciar em repositório separado e por etapas:
+Em desenvolvimento em repositório separado (`Local File Agent`):
 
-1. fundação e política de segurança;
-2. inventário somente leitura;
+1. **Concluído:** fundação e política de segurança (commit `d7c3ab2`, 5 testes unitários aprovados, pacote de passagem para o Codex preparado);
+2. **Próximo (segunda-feira com Codex):** inventário somente leitura;
 3. hashes e duplicidades;
 4. classificação determinística;
 5. integração local com modelo usando saída estruturada;
@@ -121,8 +121,7 @@ Iniciar em repositório separado e por etapas:
 10. desfazer;
 11. validação em diretório controlado com arquivos sintéticos.
 
-O primeiro prompt deve tratar somente da fundação. Nenhuma organização real de arquivos
-é autorizada por este roadmap.
+Nenhuma organização real de arquivos é autorizada nesta fase inicial.
 
 ## Jarvis Local
 
