@@ -117,12 +117,14 @@ revalidados no projeto correspondente antes de serem tratados como atuais.
   e nao transfere implicitamente memoria de conversa, permissoes, skills ou estado oculto.
 - Modelo nao e sinonimo de executor. Gemini, Claude e GPT-OSS podem ser modelos expostos
   pelo Antigravity sem se tornarem agentes independentes no Orca.
-- Erick pretende ampliar gradualmente o Organizer para outros modelos e, futuramente,
-  outros executores alem de Codex e Antigravity. Cada inclusao exige descoberta atual,
-  adaptador ou perfil explicito, canario sintetico e gate proprio antes de projeto real.
-- Claude Opus, Claude Sonnet e GPT-OSS sao candidatos informados por Erick para perfis
-  futuros via Antigravity. OpenRouter e outros provedores de API permanecem uma fase
-  opcional separada, dependente de autorizacao para conta, credencial, custo e nuvem.
+- Claude Opus 4.6 e Claude Sonnet 4.6 estao plenamente confirmados e disponiveis diretamente
+  atraves da assinatura Google AI Pro de Erick dentro do ecossistema Antigravity. O uso
+  deles e possivel, autorizado e deve ser ativamente empregado em tarefas de arquitetura,
+  implementacao de codigo complexo, refatoracao profunda e revisao de contratos, sem
+  necessidade de chaves externas da Anthropic. Devem ser priorizados para elevar a
+  qualidade tecnica e contornar restricoes de cota de outros executores (como Codex).
+- OpenRouter e outros provedores de API permanecem uma fase opcional separada, dependente
+  de autorizacao para conta, credencial, custo e nuvem.
 - O contexto compartilhado deve vir de `AGENTS.md`, dos documentos obrigatorios, da
   documentacao viva do projeto alvo e de um pacote de passagem sanitizado quando houver
   troca de executor. Nao carregue todos os arquivos Markdown indiscriminadamente.

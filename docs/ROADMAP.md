@@ -102,8 +102,7 @@ entrega por vez e só avance depois de revisar o resultado anterior.
 3. **Concluído:** sem bloqueadores pendentes na 7B.
 4. **Concluído:** MVP local formalmente aprovado e encerrado.
 5. Postergar as Etapas 8A e 8B de processamento remoto enquanto o uso local atender Erick.
-6. Avaliar separadamente uma extensão de resumos locais, preservando a transcrição
-   original e registrando a proveniência do conteúdo gerado.
+6. **Concluído:** Extensão de resumos estruturados implementada (`src/local_transcriber/summarizer.py`), CLI `local-transcriber-summarize` registrada e interface web integrada (leitura interativa com tese central, resumo executivo, roteiro de podcast com cópia, glossário com seek de mídia, flashcards de retenção e downloads de resumo). Pipeline Map-Reduce temporal com chamadas locais ao Ollama (`qwen2.5:3b`), sidecars `.resumo.md` e `.resumo.json` (schema `local-transcript-summary/v1`), preservação absoluta da transcrição original e 134 testes unitários e de integração automatizados (100% aprovados, lint Ruff limpo).
 
 ## Local File Agent
 

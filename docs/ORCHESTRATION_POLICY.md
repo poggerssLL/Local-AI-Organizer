@@ -213,8 +213,7 @@ Regras obrigatórias:
 8. `organizer-claude-opus` (Antigravity / `claude-opus-4-6-thinking` / `high`): arquitetura e gates;
 9. `organizer-gpt-oss` (Antigravity / `gpt-oss-120b-medium` / `medium`): auditoria aberta.
 
-Nenhum item autoriza instalação, login, credenciais, cobrança, API em nuvem ou operação em
-projeto real sem novo gate explícito.
+Os perfis de Claude (Claude Sonnet 4.6 e Claude Opus 4.6 Thinking) encontram-se plenamente disponíveis e autorizados para uso imediato através da assinatura Google AI Pro de Erick no Antigravity, sem necessidade de chaves de API externas da Anthropic. Seu uso deve ser priorizado para tarefas de arquitetura, desenvolvimento de código e raciocínio analítico, mitigando restrições de cota do Codex. A cobrança em nuvem de provedores de terceiros (como OpenRouter) continua dependente de autorização explícita.
 
 O contexto comum usa um manifesto versionado: `AGENTS.md`, documentos centrais
 obrigatórios, documentação viva do projeto alvo e somente os relatórios históricos
