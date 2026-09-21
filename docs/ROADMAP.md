@@ -1,6 +1,6 @@
 # Roadmap central
 
-Atualizado em: 2026-09-18.
+Atualizado em: 2026-09-21.
 
 ## Regra de sequência
 
@@ -74,11 +74,14 @@ entrega por vez e só avance depois de revisar o resultado anterior.
     Claude Opus, GPT-OSS) e formalizar a governança de delegação bidirecional e simétrica.
 17. **Concluído no escopo sintético:** formalizado o contrato do pacote de passagem
     (`orca-handoff/v1` em `docs/ORCA_HANDOFF_CONTRACT.md`) e comprovado no canário sintético
-    de 2026-09-18 (`docs/PHASE_ORCA_PTY_HANDOFF_2026-09-18.md`) o consumo pelo Codex de
-    payload gerado pelo Antigravity, com invocação comprovada de ferramenta de leitura sob
-    `windows.sandbox=unelevated`, citação de sentinela obrigatória, validação de hashes e
-    ciclo de vida ConPTY no Orca ADE (`ptyKilled: true`). Projetos reais permanecem
-    bloqueados até novo gate explícito.
+    de 2026-09-18 (`docs/PHASE_ORCA_PTY_HANDOFF_2026-09-18.md`). Em 2026-09-21, foi
+    implementado o adaptador e máquina de estados `HandoffRunner` (`src/adapters/handoff_runner.py`)
+    com 9 testes unitários determinísticos (`tests/test_handoff_runner.py`), exportação automática
+    de relatórios Markdown em `runtime/chat_exchange/` e homologação ao vivo da corrida de revezamento
+    entre Claude Opus 4.6 Thinking e Codex CLI (`gpt-5.6-terra`, modo econômico com ExitCode 0 e
+    apenas 699 tokens de saída consumidos), conforme documentado em
+    `docs/PHASE_AUTOMATED_HANDOFF_RUNNER_2026-09-21.md`. Projetos reais permanecem bloqueados
+    para escrita autônoma até novo gate explícito.
 18. **Próximo, sujeito a gate explícito:** antes de qualquer operação em projetos reais,
     receber e revisar o resultado da Etapa 7B de CUDA do `Local Transcriber` ou autorizar
     a criação da fundação e política de segurança do `Local File Agent` em repositório
