@@ -34,7 +34,7 @@ Antes de criar a tarefa, consulte a skill `model-router-advisor` e recomende:
 - executor: `[CODEX | ANTIGRAVITY]`;
 - modelo: `[MODELO EXATO CONFORME O PERFIL]`;
 - esforço: `[LOW | MEDIUM | HIGH | EXTREME]`;
-- perfil de contexto: `[organizer-core-v1 | OUTRO AUTORIZADO]`;
+- perfil de contexto: `[organizer-core-v2 | OUTRO AUTORIZADO]`;
 - fallback: `[NONE POR PADRÃO | POLÍTICA NOMINAL AUTORIZADA]`;
 - motivo: `[COMPLEXIDADE, ESTADO DE COTAS SEMANAIS E RISCO DE RETRABALHO]`;
 - alternativa econômica: `[PERFIL SECUNDÁRIO OU NÃO RECOMENDADA]`;

@@ -1,49 +1,18 @@
 # Registro central de projetos
 
-Atualizado em: 2026-09-18.
+Atualizado em: 2026-10-03.
 
-## Finalidade
-
-Este arquivo oferece uma visão curta do portfólio local de Erick. Ele não substitui a
-documentação, o Git ou os testes de cada projeto. Antes de delegar trabalho, o coordenador
-deve localizar o projeto salvo no Codex e verificar seu estado real.
-
-Não registre aqui caminhos absolutos pessoais, IDs de tarefas, IDs de host, credenciais ou
-outros identificadores de runtime. Esses valores devem ser resolvidos apenas durante a
-ação que realmente precisar deles.
-
-## Classificação das informações
-
-- **Confirmado:** observado diretamente no projeto correspondente durante uma tarefa
-  atual.
-- **Informado:** relatado por Erick ou por outra tarefa, ainda sem nova verificação neste
-  projeto.
-- **Planejado:** intenção aprovada, ainda não implementada.
-- **Desconhecido:** não inspecionado ou sem evidência suficiente.
-
-## Projetos principais
+Este registro é um resumo de portfólio, não substitui o Git, os testes nem a documentação
+viva de cada repositório. Não armazene caminhos pessoais, IDs de runtime, credenciais ou
+dados privados.
 
 | Projeto | Papel | Estado conhecido | Próximo passo seguro |
 | --- | --- | --- | --- |
-| `Local AI Organizer` | Central de arquitetura, revisão e coordenação dos projetos locais | Confirmado neste repositório: 7 skills portáteis em `.agents/skills/` com paridade instalada no catálogo do Codex (`%USERPROFILE%\.codex\skills\`). Catálogo de 10 perfis unificados em `docs/orca-model-routing-profiles.json`. Adaptador e runner automático de handoff (`src/adapters/handoff_runner.py`) implementado e homologado ao vivo entre Claude Opus 4.6 e Codex CLI (`gpt-5.6-terra`) com relatório Markdown automático e 9 testes unitários (13 testes no total da suíte). Adaptador OpenRouter validado. Projetos reais permanecem bloqueados | Avançar para a Etapa 3 (Hashes e Duplicidades) do Local File Agent no Codex com cota renovada |
-| `Local Transcriber` | Transcrição local e offline de gravações | Confirmado em repositório irmão: Etapa 7B concluída e aprovada (commit `a81bf8c`). Aceleração CUDA validada ao vivo (RTX 2050, cuDNN 9, cuBLAS 12, RTF ~0,58), fallback determinístico em CPU `int8`, resiliência de fila e 115 testes aprovados. MVP local concluído. Etapa 8 (Resumo Estruturado com Ollama local `qwen2.5:3b`, endpoints de API, integração na interface web e sidecars `.resumo.md` e `.resumo.json`) concluída com 134 testes aprovados (115 legados + 19 novos) | Manter em modo de operação local; Etapas 8A e 8B (processamento remoto) permanecem adiadas |
-| `Local File Agent` | Inventário e organização segura de arquivos com aprovação humana | Confirmado em repositório irmão: Etapas 1 e 2 concluídas com 10 testes unitários (commits `d7c3ab2` e `bcd8cac`). Módulo `DirectoryScanner` testado em árvore sintética. Handoff em `docs/HANDOFF_LOCAL_FILE_AGENT_TO_CODEX.md` | Submeter auditoria e implementação da Etapa 3 (Hashes e Duplicidades) ao Codex na segunda-feira com cota renovada |
-| `Jarvis Local` | Assistente local por voz, ferramentas permitidas e futura integração residencial | Planejado; projeto ainda não iniciado | Começar somente depois de o `Local File Agent` possuir uma base segura |
-| `Casa Inteligente` | Projeto residencial existente e separado | Confirmada apenas a existência como projeto Git salvo; arquitetura e compatibilidade não foram inspecionadas nesta etapa | Revisar seus contratos antes de propor qualquer integração com `Jarvis Local` |
+| `Local AI Organizer` | Coordenação, contratos e revisão | 7 skills portáteis; 10 perfis atualizados; ciclo de workers documentado fail-closed. Em 2026-10-03, `agy models` confirmou Gemini 3.8, Claude 5.5 e GPT-OSS; o lançamento supervisionado Antigravity falhou em prontidão e não está homologado para modelo fixo. | Validar o próximo canário apenas em fixture descartável. |
+| `Local Transcriber` | Transcrição local e offline | Informado por documentação anterior: MVP local, CUDA e resumos estruturados concluídos. Não revalidado nesta tarefa. | Manter operação local; reabrir apenas por necessidade medida. |
+| `Local File Agent` | Inventário e organização segura | Informado: etapas 1 e 2 concluídas; etapa 3 depende de gate próprio. | Auditar fronteiras antes de hashes e duplicidades. |
+| `Jarvis Local` | Assistente local por voz | Planejado. | Iniciar somente após a base segura do File Agent. |
+| `Casa Inteligente` | Projeto residencial separado | Existência informada; arquitetura não inspecionada aqui. | Revisar contratos antes de integração. |
 
-## Projetos auxiliares
-
-Outros projetos acadêmicos e pessoais podem aparecer na lista de projetos salvos do
-Codex. Eles não entram automaticamente no roadmap de IA local. O coordenador deve listar
-os projetos disponíveis no momento da delegação, selecionar o rótulo exato e não inferir
-relações apenas por semelhança de nome.
-
-## Regras de atualização
-
-1. Atualize um estado somente com evidência identificada.
-2. Marque relatos ainda não verificados como **Informado**.
-3. Não copie para cá transcrições, documentos pessoais, credenciais ou resultados
-   privados.
-4. Não transforme commits históricos em baseline atual.
-5. Quando um novo projeto for criado, registre apenas seu papel, estado e dependências;
-   detalhes técnicos pertencem ao próprio repositório.
+Classifique qualquer nova afirmação como confirmado agora, informado, planejado ou
+desconhecido. Não converta relatórios históricos em baseline atual.

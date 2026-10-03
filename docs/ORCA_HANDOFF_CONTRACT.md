@@ -36,7 +36,7 @@ O pacote de passagem é o artefato sanitizado emitido por um executor antes de e
   "timestamp": "2026-09-18T13:00:00Z",
   "source": {
     "executor": "antigravity",
-    "model": "claude-opus-4-6-thinking",
+    "model": "claude-opus-5-5-high",
     "effort": "high"
   },
   "target": {

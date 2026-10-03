@@ -267,7 +267,7 @@ class HandoffRunner:
     def build_antigravity_command(self, model: str, worktree: str) -> List[str]:
         """Gera comando deterministico para Antigravity CLI no Windows com new-project."""
         return [
-            "agy.cmd",
+            "agy",
             "--new-project",
             "--model", model,
         ]

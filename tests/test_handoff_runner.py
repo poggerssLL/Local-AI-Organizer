@@ -33,7 +33,7 @@ class TestHandoffRunner(unittest.TestCase):
         result = runner.run_handoff(
             handoff_id="handoff-unit-001",
             source_executor="antigravity",
-            source_model="claude-opus-4-6-thinking",
+            source_model="claude-opus-5-5-high",
             target_executor="codex",
             target_model="gpt-5.6-terra",
             expected_sentinel=sentinel,
@@ -61,7 +61,7 @@ class TestHandoffRunner(unittest.TestCase):
         result = runner.run_handoff(
             handoff_id="handoff-unit-privacy-1",
             source_executor="antigravity",
-            source_model="claude-opus-4-6-thinking",
+            source_model="claude-opus-5-5-high",
             target_executor="codex",
             target_model="gpt-5.6-terra",
             expected_sentinel="SENTINEL-TEST",
@@ -82,7 +82,7 @@ class TestHandoffRunner(unittest.TestCase):
         result = runner.run_handoff(
             handoff_id="handoff-unit-privacy-2",
             source_executor="antigravity",
-            source_model="claude-opus-4-6-thinking",
+            source_model="claude-opus-5-5-high",
             target_executor="codex",
             target_model="gpt-5.6-terra",
             expected_sentinel="SENTINEL-TEST",
@@ -103,7 +103,7 @@ class TestHandoffRunner(unittest.TestCase):
         result = runner.run_handoff(
             handoff_id="handoff-unit-schema",
             source_executor="antigravity",
-            source_model="claude-opus-4-6-thinking",
+            source_model="claude-opus-5-5-high",
             target_executor="codex",
             target_model="gpt-5.6-terra",
             expected_sentinel="SENTINEL-TEST",
@@ -123,7 +123,7 @@ class TestHandoffRunner(unittest.TestCase):
         result = runner.run_handoff(
             handoff_id="handoff-unit-src-fail",
             source_executor="antigravity",
-            source_model="claude-opus-4-6-thinking",
+            source_model="claude-opus-5-5-high",
             target_executor="codex",
             target_model="gpt-5.6-terra",
             expected_sentinel="SENTINEL-TEST",
@@ -143,7 +143,7 @@ class TestHandoffRunner(unittest.TestCase):
         result = runner.run_handoff(
             handoff_id="handoff-unit-tool-missing",
             source_executor="antigravity",
-            source_model="claude-opus-4-6-thinking",
+            source_model="claude-opus-5-5-high",
             target_executor="codex",
             target_model="gpt-5.6-terra",
             expected_sentinel="SENTINEL-TEST",
@@ -163,7 +163,7 @@ class TestHandoffRunner(unittest.TestCase):
         result = runner.run_handoff(
             handoff_id="handoff-unit-sentinel-mismatch",
             source_executor="antigravity",
-            source_model="claude-opus-4-6-thinking",
+            source_model="claude-opus-5-5-high",
             target_executor="codex",
             target_model="gpt-5.6-terra",
             expected_sentinel="SENTINEL-ESPERADA",
@@ -182,7 +182,7 @@ class TestHandoffRunner(unittest.TestCase):
         result = runner.run_handoff(
             handoff_id="handoff-unit-serial",
             source_executor="antigravity",
-            source_model="claude-opus-4-6-thinking",
+            source_model="claude-opus-5-5-high",
             target_executor="codex",
             target_model="gpt-5.6-terra",
             expected_sentinel="SENTINEL-TEST",
@@ -206,7 +206,7 @@ class TestHandoffRunner(unittest.TestCase):
         result = runner.run_handoff(
             handoff_id="handoff-unit-md-test",
             source_executor="antigravity",
-            source_model="claude-opus-4-6-thinking",
+            source_model="claude-opus-5-5-high",
             target_executor="codex",
             target_model="gpt-5.6-terra",
             expected_sentinel=sentinel,
@@ -224,7 +224,7 @@ class TestHandoffRunner(unittest.TestCase):
 
         self.assertIn("# Relatório de Handoff Automático — `handoff-unit-md-test`", md_content)
         self.assertIn("Turno 1: Origem", md_content)
-        self.assertIn("claude-opus-4-6-thinking", md_content)
+        self.assertIn("claude-opus-5-5-high", md_content)
         self.assertIn("Turno 2: Destino", md_content)
         self.assertIn("gpt-5.6-terra", md_content)
         self.assertIn(sentinel, md_content)

@@ -43,14 +43,14 @@ def run_live_demo():
     runner = HandoffRunner(workspace_root=workspace_root, timeout_seconds=90)
 
     # 1. Validacao de Seguranca e Privacidade do Turno 1 (Claude Opus)
-    print("\n[Passo 1] Validando payload do Turno 1 (Claude Opus 4.6)...")
+    print("\n[Passo 1] Validando payload do Turno 1 (Claude Opus 5.5)...")
     runner.validate_payload_structure(payload_data)
     print(f" -> Payload validado com sucesso sob {SCHEMA_VERSION}!")
     print(f" -> Sentinela detectada: {sentinel}")
 
     opus_summary = payload_data.get("completed_work", {}).get("summary", "")
     opus_snippet = (
-        f"Worker 1 (Claude Opus 4.6 Thinking / Antigravity):\n"
+        f"Worker 1 (Claude Opus 5.5 / Antigravity):\n"
         f"- Tarefa especificada: Modulo utilitario matematico (calculate_fibonacci e is_prime)\n"
         f"- Arquivos inspecionados: {payload_data.get('completed_work', {}).get('files_inspected')}\n"
         f"- Sentinela injetada: {sentinel}\n"
@@ -60,11 +60,11 @@ def run_live_demo():
 
     source_turn = TurnResult(
         executor="antigravity",
-        model="claude-opus-4-6-thinking",
+        model="claude-opus-5-5-high",
         effort="high",
         exit_code=0,
         duration_ms=450.0,
-        command_executed=["agy.cmd", "--new-project", "--model", "claude-opus-4-6-thinking"],
+        command_executed=["agy", "--new-project", "--model", "claude-opus-5-5-high"],
         sentinels_confirmed=[sentinel],
         raw_output_snippet=opus_snippet,
     )

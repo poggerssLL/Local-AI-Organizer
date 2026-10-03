@@ -1,159 +1,30 @@
 # Roadmap central
 
-Atualizado em: 2026-09-21.
+Atualizado em: 2026-10-03.
 
-## Regra de sequência
+## Concluído neste marco
 
-O roadmap orienta a próxima decisão, mas não autoriza implementação. Trabalhe em uma
-entrega por vez e só avance depois de revisar o resultado anterior.
+1. A fonte de perfis foi reconciliada: 10 entradas, `organizer-core-v2`, Gemini 3.8
+   low/medium/high, Claude Sonnet/Opus 5.5 e GPT-OSS, todos revalidados no catálogo
+   Antigravity atual.
+2. O contrato de ciclo de vida separa o Dispatch supervisionado da sessão manual com
+   Antigravity de modelo fixo. O teste real de prontidão do Orca falhou fechado e o terminal
+   foi liberado; portanto não existe homologação falsa.
+3. O contexto inicial foi reduzido para um manifesto curto e carregamento sob demanda.
 
-## Fundação do coordenador
+## Próximo marco: canário de capacidade do worker Antigravity
 
-1. **Concluído:** criar e validar a skill pessoal `local-project-orientation`.
-2. **Concluído:** consolidar o contexto central em `PROJECT_REGISTRY.md`,
-   `SYSTEM_MAP.md`, `ORCHESTRATION_POLICY.md`, `ROADMAP.md` e
-   `DELEGATION_TEMPLATE.md`.
-3. **Concluído:** validar em um novo chat do projeto `Local AI` a recuperação do
-   portfólio, das regras de autorização e do próximo passo a partir da documentação
-   central.
-4. **Concluído:** criar e validar a skill `phase-gate-reviewer`.
-5. **Concluído:** criar e validar a skill `implementation-prompt-builder`, incluindo a
-   recomendação justificada de modelo e esforço para cada nova tarefa.
-6. **Concluído:** confirmar a descoberta de `implementation-prompt-builder` e criar e
-   validar a skill `local-ai-release-review`.
-7. **Concluído:** confirmar a descoberta de `local-ai-release-review`; criar, validar,
-   descobrir e testar funcionalmente `local-project-coordinator`, incluindo autorização,
-   seleção de modelo e esforço, delegação de uma única tarefa, acompanhamento e gate de
-   evidências.
-8. **Concluído:** criar e validar `local-integration-architect` para contratos entre
-   projetos, orquestradores e agentes; sua descoberta foi confirmada pelo uso em novo
-   chat em 2026-09-15.
-9. **Concluído:** ampliar `local-project-coordinator`, `local-integration-architect` e
-   `implementation-prompt-builder` com envelopes de execução autônoma e tornar obrigatória
-   a atualização do roadmap após marcos comprovados ou mudanças de necessidade.
-10. **Concluído no escopo sintético:** o piloto autônomo controlado do `Orca ADE`
-    confirmou, para Codex e Antigravity, leitura confinada, bloqueio de escrita no perfil
-    somente leitura, escrita reversível em worktree separado, restauração e cancelamento.
-    O segundo complemento do Antigravity resolveu o worktree no Windows com `cwd`
-    validado e `--new-project`, preservou hashes e Git e encerrou todos os terminais. A
-    conclusão não libera projeto real. A atualização automática observada de 1.2.4 para
-    1.2.5 e a recuperação necessária do detector de prontidão permanecem riscos de
-    integração a tratar em gate próprio.
-11. **Concluído:** estabelecer como padrão do portfólio a automação por conectores, APIs,
-    terminal e arquivos; etapas visuais são orientadas para Erick, e controle direto de
-    teclado e mouse exige autorização explícita e delimitada.
-12. **Concluído:** delegar ao Organizer autoridade operacional sobre a raiz temporária do
-    piloto, incluindo reconstrução de fixtures e worktrees, resolução do `cwd`, processos,
-    sandbox e allowlists mínimas, mantendo proibidos bypass, curingas globais e acesso a
-    projetos reais.
-13. **Concluído:** executar o segundo complemento com Antigravity no `cwd` absoluto do
-    worktree, usando caminhos relativos; comprovar leitura, bloqueio de escrita, escrita
-    reversível, restauração e cancelamento supervisionado sem bypass.
-14. **Concluído no escopo sintético (complemento da trilha Codex concluído):** os quatro
-    perfis de execução foram materializados (`docs/orca-model-routing-profiles.json`) e
-    vinculados ao repositório do Organizer no Orca via Quick Commands escopados (`<organizer-repo-id>`)
-    sem bypass global. O canário sintético Antigravity comprovou leitura confinada de sentinelas,
-    hashes, escrita reversível e cancelamento supervisionado pelo Orca (`PHASE_ORCA_MODEL_ROUTING_2026-09-17.md`).
-    O complemento de 2026-09-18 (`PHASE_ORCA_MODEL_ROUTING_COMPLEMENT_2026-09-18.md`) caracterizou
-    a causa do timeout em `hook: PreToolUse` no Codex CLI como tentativa de elevação de sandbox
-    no Windows em execução headless; com a flag `-c windows.sandbox=unelevated`, execuções completaram
-    com ExitCode 0 em ~18-19s sob sandbox read-only, com aviso `os error 183` confirmado como
-    não causal. Como a execução headless de turno único produziu apenas resposta conversacional
-    sem acionar ferramentas de leitura de arquivos, a leitura de sentinelas pelo Codex e o pacote de
-    passagem automatizado entre provedores permanecem explicitamente como ainda não validados.
-    Projetos reais continuam bloqueados.
-15. **Concluído:** portar as seis skills do Organizer para `.agents/skills/`, com
-    frontmatter e referências locais compatíveis com o formato de workspace do Antigravity.
-    A materialização, a descoberta pelo runtime e o canário somente leitura
-    (`local-project-orientation`) foram executados e aprovados no Antigravity em 2026-09-18
-    sem mutações no Git.
-16. **Concluído:** criar a sétima skill `model-router-advisor`, garantindo descoberta dual
-    no Antigravity e no catálogo do Codex (`%USERPROFILE%\.codex\skills\`); materializar o
-    catálogo unificado de 9 perfis em `docs/orca-model-routing-profiles.json` cobrindo
-    OpenAI (Luna, Terra, Sol, Astra) e Google Pro AI (Gemini Flash Med/High, Claude Sonnet,
-    Claude Opus, GPT-OSS) e formalizar a governança de delegação bidirecional e simétrica.
-17. **Concluído no escopo sintético:** formalizado o contrato do pacote de passagem
-    (`orca-handoff/v1` em `docs/ORCA_HANDOFF_CONTRACT.md`) e comprovado no canário sintético
-    de 2026-09-18 (`docs/PHASE_ORCA_PTY_HANDOFF_2026-09-18.md`). Em 2026-09-21, foi
-    implementado o adaptador e máquina de estados `HandoffRunner` (`src/adapters/handoff_runner.py`)
-    com 9 testes unitários determinísticos (`tests/test_handoff_runner.py`), exportação automática
-    de relatórios Markdown em `runtime/chat_exchange/` e homologação ao vivo da corrida de revezamento
-    entre Claude Opus 4.6 Thinking e Codex CLI (`gpt-5.6-terra`, modo econômico com ExitCode 0 e
-    apenas 699 tokens de saída consumidos), conforme documentado em
-    `docs/PHASE_AUTOMATED_HANDOFF_RUNNER_2026-09-21.md`. Projetos reais permanecem bloqueados
-    para escrita autônoma até novo gate explícito.
-18. **Próximo, sujeito a gate explícito:** antes de qualquer operação em projetos reais,
-    receber e revisar o resultado da Etapa 7B de CUDA do `Local Transcriber` ou autorizar
-    a criação da fundação e política de segurança do `Local File Agent` em repositório
-    separado.
-19. **Planejado posteriormente:** permitir novos executores além de Codex e Antigravity
-    por um contrato de adaptador versionado. Cada executor terá descoberta, permissões,
-    inicialização, retomada, cancelamento, evidências e gate próprios.
-20. **Concluído no escopo de adaptador e testes ao vivo:** formalizado o contrato de
-    integração (`docs/OPENROUTER_INTEGRATION_CONTRACT.md`), implementado o cliente em
-    Python puro (`src/adapters/openrouter_client.py`) com salvaguarda ativa de privacidade
-    contra caminhos locais, suíte de 4 testes unitários automatizados, descoberta dinâmica
-    de 25 modelos gratuitos e validação real comprovada com `qwen/qwen3.8-27b:free`.
-    O catálogo de 5 usos automatizados futuros foi documentado em
-    `docs/GUIA_E_FUTUROS_USOS_OPENROUTER.md`, mantendo a regra de que dados pessoais e
-    áudios reais permanecem estritamente bloqueados para envio à nuvem.
+Em fixture descartável, verificar se uma versão/configuração do Orca consegue preservar a
+identidade e aceitar uma tarefa em terminal Antigravity já pronto. Critérios: modelo
+observável, `worker_done`, `worker-release`, zero workers reclaimable e Git limpo. Sem isso,
+perfis Antigravity com modelo fixo permanecem somente leitura manual e não atendem escrita.
 
-## Local Transcriber
+## Marcos posteriores
 
-1. **Concluído:** receber o resultado final da Etapa 7B (commit `a81bf8c`, versão 0.7.1, schema v4).
-2. **Concluído:** revisar a instalação, a validação CUDA real (`config check` com 1 GPU e compute types ativos), o fallback em CPU, a documentação e o Git (working tree limpa, 115 testes aprovados e Ruff sem violações).
-3. **Concluído:** sem bloqueadores pendentes na 7B.
-4. **Concluído:** MVP local formalmente aprovado e encerrado.
-5. Postergar as Etapas 8A e 8B de processamento remoto enquanto o uso local atender Erick.
-6. **Concluído:** Extensão de resumos estruturados implementada (`src/local_transcriber/summarizer.py`), CLI `local-transcriber-summarize` registrada e interface web integrada (leitura interativa com tese central, resumo executivo, roteiro de podcast com cópia, glossário com seek de mídia, flashcards de retenção e downloads de resumo). Pipeline Map-Reduce temporal com chamadas locais ao Ollama (`qwen2.5:3b`), sidecars `.resumo.md` e `.resumo.json` (schema `local-transcript-summary/v1`), preservação absoluta da transcrição original e 134 testes unitários e de integração automatizados (100% aprovados, lint Ruff limpo).
+1. Revisar o gate da Etapa 3 do `Local File Agent` antes de qualquer hash em arquivos reais.
+2. Manter `Local Transcriber` em operação local; processamentos remotos seguem adiados.
+3. Iniciar `Jarvis Local` apenas após políticas de ferramentas e aprovação humana no File
+   Agent.
 
-## Local File Agent
-
-Em desenvolvimento em repositório separado (`Local File Agent`):
-
-1. **Concluído:** fundação e política de segurança (commit `d7c3ab2`, 5 testes unitários aprovados);
-2. **Concluído:** inventário somente leitura com `DirectoryScanner` e árvore sintética (commit `bcd8cac`, 10 testes unitários aprovados);
-3. **Próximo (segunda-feira com Codex):** hashes SHA-256 e detecção de duplicidades;
-4. classificação determinística;
-5. integração local com modelo usando saída estruturada;
-6. plano de operações;
-7. prévia e aprovação;
-8. execução transacional;
-9. diário de auditoria;
-10. desfazer;
-11. validação em diretório controlado com arquivos sintéticos.
-
-Nenhuma organização real de arquivos é autorizada nesta fase inicial.
-
-## Jarvis Local
-
-Começar somente depois de o `Local File Agent` estabelecer políticas seguras para
-ferramentas e aprovação:
-
-1. arquitetura e threat model;
-2. microfone e detecção de fala;
-3. STT local de baixa latência;
-4. TTS local;
-5. conversa sem ferramentas;
-6. planner estruturado;
-7. catálogo de ferramentas permitido;
-8. confirmação de ações sensíveis;
-9. integração local revisada com Home Assistant ou `Casa Inteligente`;
-10. wake word, memória local e dispositivos distribuídos.
-
-## Processamento remoto
-
-As Etapas 8A e 8B do `Local Transcriber` estão adiadas, não canceladas. Retome somente se
-medições reais mostrarem que o computador atual não atende ao uso desejado ou se Erick
-quiser explicitamente usar outra máquina.
-
-## Próximo marco
-
-Com o canário interativo PTY e o pacote de passagem formalmente comprovados no escopo
-sintético sem resíduos ou processos órfãos, a fundação de coordenação e orquestração do
-`Local AI Organizer` encontra-se plenamente estabilizada. O próximo passo do portfólio
-volta-se para os projetos de domínio: aguardar a entrega da Etapa 7B de CUDA no `Local
-Transcriber` para revisão, ou aprovar o início do `Local File Agent` em repositório
-separado. Como opção paralela de pesquisa, permanece disponível a modelagem do adaptador
-OpenRouter em ambiente sintético. Projetos reais continuam bloqueados para escrita pelo
-Orca até homologação em cada caso.
+Este roadmap não autoriza implementação, instalação, credenciais, commit, push ou escrita
+em projetos irmãos.
