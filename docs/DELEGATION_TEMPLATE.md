@@ -30,21 +30,37 @@ projeto. Resolva ao vivo o caminho e o baseline; não salve IDs de runtime neste
 
 Antes de criar a tarefa, consulte a skill `model-router-advisor` e recomende:
 
-- perfil oficial: `[organizer-codex-luna | organizer-codex-economy | organizer-codex-strong | organizer-codex-astra | organizer-gemini-economy | organizer-gemini-strong | organizer-claude-sonnet | organizer-claude-opus | organizer-gpt-oss]`;
-- executor: `[CODEX | ANTIGRAVITY]`;
+- perfil oficial: `[organizer-codex-luna | organizer-codex-economy | organizer-codex-strong | organizer-gemini-low | organizer-gemini-economy | organizer-gemini-strong | organizer-claude-sonnet | organizer-claude-opus | organizer-gpt-oss | organizer-openrouter-free]`;
+- executor: `[CODEX | ANTIGRAVITY | OPENROUTER AUTORIZADO]`;
 - modelo: `[MODELO EXATO CONFORME O PERFIL]`;
 - esforço: `[LOW | MEDIUM | HIGH | EXTREME]`;
 - perfil de contexto: `[organizer-core-v2 | OUTRO AUTORIZADO]`;
 - fallback: `[NONE POR PADRÃO | POLÍTICA NOMINAL AUTORIZADA]`;
 - motivo: `[COMPLEXIDADE, ESTADO DE COTAS SEMANAIS E RISCO DE RETRABALHO]`;
 - alternativa econômica: `[PERFIL SECUNDÁRIO OU NÃO RECOMENDADA]`;
-- gatilho de escalada: `[CONDIÇÃO OBJETIVA; ASTRA REQUER JUSTIFICATIVA EXPLÍCITA]`;
+- gatilho de escalada: `[CONDIÇÃO OBJETIVA; REVALIDAR MODELO E CAPACIDADE NO EXECUTOR]`;
 - limitações: `[DISPONIBILIDADE OU CONSUMO DE COTA DESCONHECIDO]`.
 
 A delegação é estritamente **bidirecional e simétrica**: o prompt pode ser gerado e
 disparado a partir de uma sessão no Codex ou no Antigravity. Não substitua
 silenciosamente executor, modelo ou esforço. Uma troca entre provedores exige encerrar o
 worker anterior, verificar o checkout e fornecer um pacote de passagem sanitizado.
+
+## Plano de colaboração entre executores
+
+Preencha este bloco quando a etapa usar Codex e Antigravity ou mais de um worker. Consulte
+`CODEX_ANTIGRAVITY_COLLABORATION.md`; não crie um perfil híbrido no catálogo.
+
+- coordenador: `[executor, modelo, esforço e responsabilidade]`;
+- participantes: `[papel, executor, modelo, esforço, somente leitura ou escrita]`;
+- checkout de cada participante: `[raiz ou worktree isolado]`;
+- escritor único: `[nome do participante ou nenhum]`;
+- ordem: `[leitura/auditoria -> escritor -> QA/gate]`;
+- pacote de passagem sanitizado: `[baseline, escopo, exclusões, validação, parada e evidências]`;
+- evento de troca ou escalada: `[encerramento, Git revisado, nova autorização ou nenhum]`.
+
+Não atribua trabalho nominalmente sem Dispatch real. Permissões, credenciais, contexto
+oculto, commit e push não acompanham uma passagem entre executores.
 
 ## Prompt-base
 

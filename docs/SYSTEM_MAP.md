@@ -23,6 +23,11 @@ Antigravity; não são agentes independentes do Orca. O catálogo de perfis est�
 `orca-model-routing-profiles.json`; o limite atual de lançamento Antigravity está em
 `ORCA_WORKER_LIFECYCLE.md`. Não há fallback silencioso nem dois escritores por checkout.
 
+Quando uma etapa exigir colaboração entre executores, ela segue o contrato
+`CODEX_ANTIGRAVITY_COLLABORATION.md`: leitores e auditores podem trabalhar em paralelo
+somente leitura ou em worktrees isolados; o pacote de passagem é sanitizado; um único
+escritor integra mudanças sequencialmente; e um gate independente revisa as evidências.
+
 ## Invariantes de integração
 
 - cada projeto mantém repositório, dados e documentação próprios;

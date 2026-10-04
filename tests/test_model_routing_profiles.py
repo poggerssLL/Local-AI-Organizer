@@ -6,6 +6,10 @@ import unittest
 
 
 PROFILES_PATH = Path(__file__).resolve().parents[1] / "docs" / "orca-model-routing-profiles.json"
+TEMPLATE_PATH = Path(__file__).resolve().parents[1] / "docs" / "DELEGATION_TEMPLATE.md"
+ROUTER_SKILL_PATH = Path(__file__).resolve().parents[1] / ".agents" / "skills" / "model-router-advisor" / "SKILL.md"
+LIFECYCLE_PATH = Path(__file__).resolve().parents[1] / "docs" / "ORCA_WORKER_LIFECYCLE.md"
+COLLABORATION_PATH = Path(__file__).resolve().parents[1] / "docs" / "CODEX_ANTIGRAVITY_COLLABORATION.md"
 
 
 class TestModelRoutingProfiles(unittest.TestCase):
@@ -26,6 +30,22 @@ class TestModelRoutingProfiles(unittest.TestCase):
             self.assertEqual(profile["fallback"], "none")
             self.assertTrue(profile["single_writer"])
 
+    def test_template_and_router_skill_match_the_catalog(self):
+        template = TEMPLATE_PATH.read_text(encoding="utf-8")
+        skill = ROUTER_SKILL_PATH.read_text(encoding="utf-8")
+        for profile in self.profiles:
+            self.assertIn(profile["profile_id"], template)
+            if profile["executor"] != "openrouter":
+                self.assertIn(profile["model"], skill)
+        for obsolete in (
+            "organizer-codex-astra",
+            "gpt-5.6-astra",
+            "claude-sonnet-4-6",
+            "claude-opus-4-6-thinking",
+        ):
+            self.assertNotIn(obsolete, template)
+            self.assertNotIn(obsolete, skill)
+
     def test_antigravity_recommendations_match_validated_catalog_snapshot(self):
         models = {
             profile["model"]
@@ -43,6 +63,18 @@ class TestModelRoutingProfiles(unittest.TestCase):
                 "gpt-oss-120b-medium",
             },
         )
+
+    def test_lifecycle_and_collaboration_contracts_preserve_single_writer_gate(self):
+        lifecycle = LIFECYCLE_PATH.read_text(encoding="utf-8")
+        collaboration = COLLABORATION_PATH.read_text(encoding="utf-8")
+
+        self.assertIn("Orca 1.4.219", lifecycle)
+        self.assertIn("worker_done", lifecycle)
+        self.assertIn("worker-release", lifecycle)
+        self.assertIn("escritor por checkout", lifecycle.lower())
+        self.assertIn("Codex e Antigravity são executores distintos", collaboration)
+        self.assertIn("Há exatamente um escritor por checkout", collaboration)
+        self.assertIn("fallback: none", collaboration)
 
 
 if __name__ == "__main__":

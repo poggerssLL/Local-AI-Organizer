@@ -1,6 +1,6 @@
 # Contrato de roteamento de modelos no Orca
 
-Atualizado em: 2026-10-03. Contrato: `orca-model-routing/v1`.
+Atualizado em: 2026-10-04. Contrato: `orca-model-routing/v1`.
 
 ## Fonte de verdade e escopo
 
@@ -47,14 +47,16 @@ credencial ou dados de runtime.
 - Um perfil inválido ou indisponível falha fechado; não há substituição automática.
 - Codex com modelo fixo pode usar `worker-start` e precisa comprovar `launch.effective`.
 - Antigravity com modelo fixo segue o contrato específico em
-  `docs/ORCA_WORKER_LIFECYCLE.md`; não prometa um Dispatch supervisionado onde o Orca não
-  suporta essa preferência.
+  `docs/ORCA_WORKER_LIFECYCLE.md`. O canário atual comprova o caminho supervisionado em
+  fixture, mas cada Dispatch deve revalidar disponibilidade e registrar o modelo efetivo no
+  recibo; um perfil do catálogo não é prova isolada de lançamento.
 - Troca de executor exige término verificável do worker anterior, Git revisado e pacote
   sanitizado com objetivo, baseline, evidências e limitações — nunca transcript completo.
 
 ## Gate de promoção
 
 Um perfil só pode passar de leitura sintética para escrita reversível após provar modelo
-efetivo, contexto correto, permissões mínimas, resultado, limpeza de worker e Git. Projetos
-reais, commit, push, credenciais, instalação, rede pública e controle visual permanecem
-gates separados.
+efetivo, contexto correto, permissões mínimas, resultado, limpeza de worker e Git. A
+colaboração entre Codex e Antigravity segue `CODEX_ANTIGRAVITY_COLLABORATION.md` e não cria
+um perfil híbrido nem autoriza dois escritores. Projetos reais, commit, push, credenciais,
+instalação, rede pública e controle visual permanecem gates separados.

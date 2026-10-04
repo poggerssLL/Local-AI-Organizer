@@ -1,6 +1,6 @@
 # Política de orquestração
 
-Atualizada em: 2026-10-03.
+Atualizada em: 2026-10-04.
 
 ## Autoridade
 
@@ -38,8 +38,8 @@ recomendações não são garantia de consumo, qualidade ou disponibilidade. `fa
 impede troca automática.
 
 Antigravity com modelo fixo só pode ser usado pelo caminho descrito em
-`ORCA_WORKER_LIFECYCLE.md`. Nunca alivie sandbox, permita acesso externo ou use bypass para
-fazer uma sessão manual parecer um worker supervisionado.
+`ORCA_WORKER_LIFECYCLE.md`, com revalidação por lançamento. Nunca alivie sandbox, permita
+acesso externo ou use bypass para fazer uma sessão manual parecer um worker supervisionado.
 
 ## Paralelismo, evidência e gates
 
@@ -52,3 +52,12 @@ sucesso.
 Projetos reais ficam bloqueados até gate específico. Em fixture descartável, o coordenador
 pode administrar somente a subárvore autorizada e allowlists mínimas; são proibidos bypass,
 curingas globais, acesso fora do workspace e persistência de argumentos globais.
+
+## Colaboração Codex + Antigravity
+
+O contrato `CODEX_ANTIGRAVITY_COLLABORATION.md` define a composição entre executores. Um
+coordenador deve registrar executor, modelo, esforço, papel, checkout, permissões e condição
+de parada de cada participante. Leitura e auditoria podem ser paralelas; escrita requer um
+único responsável e integração sequencial. A troca de executor exige worker anterior
+encerrado, Git verificado e pacote sanitizado; permissões, credenciais e contexto oculto não
+são transferidos.
