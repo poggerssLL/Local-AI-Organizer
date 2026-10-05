@@ -30,7 +30,7 @@ projeto. Resolva ao vivo o caminho e o baseline; não salve IDs de runtime neste
 
 Antes de criar a tarefa, consulte a skill `model-router-advisor` e recomende:
 
-- perfil oficial: `[organizer-codex-luna | organizer-codex-economy | organizer-codex-strong | organizer-gemini-low | organizer-gemini-economy | organizer-gemini-strong | organizer-claude-sonnet | organizer-claude-opus | organizer-gpt-oss | organizer-openrouter-free]`;
+- perfil oficial: `[organizer-codex-luna | organizer-codex-economy | organizer-codex-sol-medium | organizer-codex-strong | organizer-gemini-low | organizer-gemini-economy | organizer-gemini-strong | organizer-claude-sonnet | organizer-claude-opus | organizer-gpt-oss | organizer-openrouter-free]`;
 - executor: `[CODEX | ANTIGRAVITY | OPENROUTER AUTORIZADO]`;
 - modelo: `[MODELO EXATO CONFORME O PERFIL]`;
 - esforço: `[LOW | MEDIUM | HIGH | EXTREME]`;

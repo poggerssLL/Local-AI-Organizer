@@ -1,35 +1,41 @@
-# Prompt de Inicialização para o Codex - Etapa 3 (Local File Agent)
+# Encaminhamento da Etapa 3 — Local File Agent
 
-Data: 2026-09-21 (Segunda-feira)  
-Projeto Alvo: `Local File Agent`  
-Baseline Esperado: Branch `main`, Commit `bcd8cac`, 10/10 testes unitários aprovados  
+Atualizado em: 2026-10-04.
 
----
+O baseline de preparação confirmado foi `main`, commit `6d24cb0`, árvore limpa e
+32 testes aprovados. Revalide o Git e a documentação do projeto alvo a cada tarefa;
+este registro não comprova o estado de um checkout futuro.
 
-## Texto Pronto para Envio ao Codex
+O contrato e o prompt de execução pertencem ao repositório **Local File Agent**:
+`AGENTS.md`, `FOUNDATION.md`, `PROJECT_STATE.md`, `ROADMAP.md`, `KNOWN_ISSUES.md` e
+`PROMPT_CODEX_ETAPA_3.md`. Após a implementação, consulte também
+`docs/PHASE_03_HASHES_AND_DUPLICATES_2026-10-04.md` e o gate independente registrado
+na documentação viva. O Organizer não substitui essa fonte nem duplica o prompt.
 
-```text
-Atue como o arquiteto sênior e organizador do projeto Local File Agent (C:/Users/erick/OneDrive/Documentos/Local File Agent).
+## Envelope da etapa
 
-Antes de qualquer ação:
-1. Confirme o diretório e a raiz Git com `git rev-parse --show-toplevel`;
-2. Verifique o baseline esperado: branch `main`, commit `bcd8cac`, working tree limpa;
-3. Leia o AGENTS.md, FOUNDATION.md, ROADMAP.md e docs/PHASE_02_READONLY_INVENTORY_2026-09-18.md;
-4. Execute a suíte de testes existente com `python -m unittest discover tests` e confirme 10 de 10 testes aprovados.
+- Hashes SHA-256 opcionais em blocos e agrupamento determinístico de duplicidades.
+- Scanner permanece somente de metadados; hashing é uma operação separada e opt-in.
+- Backend inicial Windows, com identidade e confinamento do objeto aberto verificados
+  antes de ler conteúdo; capacidade ausente falha fechado, sem `realpath` + `open`
+  como alternativa de segurança.
+- Política conservadora para links, junctions, reparse points, placeholders e hardlinks.
+- Desenvolvimento e testes somente em fixtures sintéticos autorizados; nenhum uso de
+  arquivos pessoais, hidratação de nuvem, instalação, credencial ou rede pública.
+- Um escritor por checkout; arquitetura, QA e gate com proveniência real de Dispatch.
+- Código, testes e documentação podem ser escritos quando autorizados; leitura dos
+  arquivos analisados não autoriza movimentação, alteração ou exclusão desses arquivos.
+- Commit, push, publicação e avanço para a Etapa 4 exigem autorização própria.
 
-Seu Objetivo (Etapa 3 - Hashes SHA-256 e Detecção de Duplicidades):
-1. Auditar as Etapas 1 (Fundação e Segurança) e 2 (Inventário Somente Leitura) implementadas pela equipe Antigravity multi-agente;
-2. Implementar a Etapa 3 do ROADMAP.md:
-   - Criar módulo `src/core/hasher.py` com cálculo determinístico de hash SHA-256 lendo arquivos em blocos (chunks de 64 KB a 1 MB) para não estourar memória RAM;
-   - Criar lógica determinística de agrupamento e detecção de arquivos duplicados (por tamanho e hash);
-   - Integrar o cálculo de hash opcional ao `DirectoryScanner` ou `ScanReport`;
-3. Criar a suíte de testes unitários para a Etapa 3 em `tests/test_hasher.py` utilizando a árvore de fixtures sintéticos (`tests/fixtures/synthetic_tree/`);
-4. Atualizar ROADMAP.md, PROJECT_STATE.md e gerar o relatório em `docs/PHASE_03_HASHES_AND_DUPLICATES_2026-09-21.md`.
+## Coordenação
 
-Regras Invioláveis:
-- Operação 100% SOMENTE LEITURA: nenhuma modificação, deleção ou movimentação de arquivos em disco;
-- Não acesse nem processe arquivos reais de Erick; trabalhe estritamente com os fixtures sintéticos;
-- Mandato de Delegação Ativa: Não execute a Etapa 3 de forma solitária ou monobloco. Decomponha a entrega em sub-papéis especializados (especificação de chunks, implementação de I/O, suíte de testes e auditoria de conformidade), registrando explicitamente a proveniência de cada atividade no relatório;
-- Mantenha 100% de confinamento ao diretório do projeto;
-- Não execute git push sem aprovação nominal expressa de Erick.
-```
+Use as skills de orientação, coordenação, construção de prompt, roteamento e gate,
+conforme a tarefa. Para delegação supervisionada, carregue a skill `orchestration`
+do CLI Orca selecionado e siga Run, Task, Dispatch, evidências e decisão de release.
+Escolha o perfil versionado no instante do lançamento, confira `launch.effective`
+e mantenha `fallback: none`.
+
+O encaminhamento não autoriza relançar a implementação. Se a Etapa 3 já estiver
+implementada na árvore de trabalho, revise a entrega existente e encaminhe somente
+complementos delimitados. Separe testes com mocks, fixtures físicos, validação Windows
+nativa e limitações pendentes; não transforme um teste pulado em validação aprovada.

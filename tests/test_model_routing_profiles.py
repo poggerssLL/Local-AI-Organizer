@@ -17,11 +17,26 @@ class TestModelRoutingProfiles(unittest.TestCase):
         self.profiles = json.loads(PROFILES_PATH.read_text(encoding="utf-8"))
 
     def test_catalog_has_unique_current_profiles(self):
-        self.assertEqual(len(self.profiles), 10)
+        self.assertEqual(len(self.profiles), 11)
         ids = [profile["profile_id"] for profile in self.profiles]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertNotIn("organizer-codex-astra", ids)
         self.assertIn("organizer-gemini-low", ids)
+
+    def test_codex_profiles_distinguish_economy_from_sol_implementation(self):
+        by_id = {profile["profile_id"]: profile for profile in self.profiles}
+        self.assertEqual(
+            (by_id["organizer-codex-economy"]["model"], by_id["organizer-codex-economy"]["effort"]),
+            ("gpt-5.6-terra", "medium"),
+        )
+        self.assertEqual(
+            (by_id["organizer-codex-sol-medium"]["model"], by_id["organizer-codex-sol-medium"]["effort"]),
+            ("gpt-6.1-sol", "medium"),
+        )
+        self.assertEqual(
+            (by_id["organizer-codex-strong"]["model"], by_id["organizer-codex-strong"]["effort"]),
+            ("gpt-6.1-sol", "high"),
+        )
 
     def test_profiles_preserve_safety_invariants(self):
         for profile in self.profiles:

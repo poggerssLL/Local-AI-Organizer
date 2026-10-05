@@ -21,8 +21,9 @@ recomendados ficam em `orca-model-routing-profiles.json`; o contrato detalhado f
 | --- | --- |
 | leitura/triagem curta | `organizer-codex-luna` ou `organizer-gemini-low` |
 | documentação e auditoria ampla | `organizer-gemini-economy` |
-| alteração delimitada | `organizer-codex-economy` |
-| implementação e testes complexos | `organizer-claude-sonnet` ou `organizer-codex-strong` |
+| tarefa mecânica, validação pontual ou teste usual | `organizer-codex-economy` |
+| implementação ou debugging de complexidade média | `organizer-codex-sol-medium` |
+| implementação e testes complexos | `organizer-codex-strong` ou `organizer-claude-sonnet` |
 | arquitetura e gate crítico | `organizer-claude-opus` |
 | segunda opinião econômica | `organizer-gpt-oss` |
 
@@ -32,9 +33,10 @@ OpenRouter não é fallback: exige autorização de custo, credencial e contrato
 
 Carregue `orca skills get orchestration` antes de operar. Para Codex, o Orca pode registrar
 modelo e esforço no recibo de lançamento. Para Antigravity, consulte
-`ORCA_WORKER_LIFECYCLE.md`: o Orca atual não aceita `--model` para esse executor e a sessão
-manual com modelo fixo não é um Dispatch supervisionado. Não retire sandbox nem use flags
-de bypass para alterar essa conclusão.
+`ORCA_WORKER_LIFECYCLE.md`: a disponibilidade deve ser revalidada com `agy models` e o
+modelo efetivo precisa constar no recibo do Dispatch; uma sessão manual com modelo fixo não
+é um Dispatch supervisionado. Não retire sandbox nem use flags de bypass para alterar essa
+conclusão.
 
 No fim de um Dispatch concluído, processe a evidência e use `worker-release`; não feche a
 aba manualmente. Commit, push, instalação, login e controle visual não fazem parte deste

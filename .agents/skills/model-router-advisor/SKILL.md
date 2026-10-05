@@ -19,9 +19,12 @@ com `fallback: none`.
 
 - `organizer-codex-luna` — `gpt-5.6-luna` / `low`: leitura curta, triagem e tarefas
   mecânicas.
-- `organizer-codex-economy` — `gpt-5.6-terra` / `medium`: mudança delimitada e testes
-  usuais.
-- `organizer-codex-strong` — `gpt-5.6-sol` / `high`: integração e depuração complexas.
+- `organizer-codex-economy` — `gpt-5.6-terra` / `medium`: tarefas mecânicas, validações
+  pontuais e testes usuais.
+- `organizer-codex-sol-medium` — `gpt-6.1-sol` / `medium`: padrão para implementação de
+  complexidade média, debugging delimitado e revisão técnica.
+- `organizer-codex-strong` — `gpt-6.1-sol` / `high`: arquitetura, integração e depuração
+  complexas.
 - `organizer-gemini-low` — `gemini-3.8-flash-low` / `low`: classificação e síntese curta.
 - `organizer-gemini-economy` — `gemini-3.8-flash-medium` / `medium`: documentação e
   auditoria ampla.

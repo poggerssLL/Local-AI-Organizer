@@ -31,11 +31,13 @@ checkout e não amplia permissões quando troca executor.
 
 ## Perfis e custo
 
-O catálogo atual possui 10 perfis. `gpt-5.6-luna` é o ponto de partida econômico no Codex;
-Gemini Flash low/medium atende triagem e documentação; Sonnet 5.5 é indicado para código;
-Opus 5.5 para arquitetura e gates; GPT-OSS é uma auditoria independente econômica. Essas
-recomendações não são garantia de consumo, qualidade ou disponibilidade. `fallback: none`
-impede troca automática.
+O catálogo atual possui 11 perfis. `gpt-5.6-luna` é o ponto de partida econômico no Codex;
+`gpt-5.6-terra` fica restrito a tarefas mecânicas e validações pontuais; `gpt-6.1-sol` em
+`medium` é o padrão para implementação de complexidade média, e em `high` atende arquitetura
+e depuração complexa. Gemini Flash low/medium atende triagem e documentação; Sonnet 5.5 é
+indicado para código; Opus 5.5 para arquitetura e gates; GPT-OSS é uma auditoria independente
+econômica. Essas recomendações não são garantia de consumo, qualidade ou disponibilidade.
+`fallback: none` impede troca automática.
 
 Antigravity com modelo fixo só pode ser usado pelo caminho descrito em
 `ORCA_WORKER_LIFECYCLE.md`, com revalidação por lançamento. Nunca alivie sandbox, permita

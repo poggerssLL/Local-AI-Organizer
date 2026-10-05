@@ -12,8 +12,9 @@ escalada e limitações.
 Quando a tarefa for lançada pelo Orca neste projeto, use somente perfis materializados em
 `docs/orca-model-routing-profiles.json`:
 
-- Codex econômico: `gpt-5.6-terra`, esforço `medium`;
-- Codex forte: `gpt-5.6-sol`, esforço `high`;
+- Codex mecânico: `gpt-5.6-terra`, esforço `medium`;
+- Codex padrão para implementação: `gpt-6.1-sol`, esforço `medium`;
+- Codex forte: `gpt-6.1-sol`, esforço `high`;
 - Gemini econômico: `gemini-3.8-flash-medium`, esforço `medium`;
 - Gemini forte: `gemini-3.8-flash-high`, esforço `high`.
 
@@ -22,10 +23,10 @@ do provedor. Falha de disponibilidade deve encerrar o lançamento, salvo fallbac
 previamente autorizado. Não equipare preço da API, créditos do provedor e limites do
 aplicativo.
 
-Claude Opus, Claude Sonnet e GPT-OSS são candidatos planejados dentro do executor
-Antigravity, ainda sem perfil materializado neste contrato. Use somente o identificador e
-o esforço devolvidos pelo catálogo real. Um terceiro executor ou OpenRouter exige
-contrato separado; não improvise comando, credencial ou fallback.
+Claude Opus, Claude Sonnet e GPT-OSS possuem perfis materializados no executor
+Antigravity, mas a disponibilidade precisa ser confirmada no catálogo real. OpenRouter
+exige autorização específica para contrato, credencial e custo; não improvise comando ou
+fallback.
 
 Escale somente diante de dificuldade observada: baseline inconsistente, falha repetível
 sem causa, risco crítico ou escopo materialmente maior. Uma escalada que mude custo,
