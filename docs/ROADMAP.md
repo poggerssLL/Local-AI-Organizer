@@ -130,10 +130,12 @@ restrição de visibilidade/execução ainda não foi demonstrada.
 Erick autorizou commit e push das entregas. Etapa 4 do File Agent publicada em
 main `9db3c44`; consulta ao servidor confirmou o mesmo SHA de HEAD/origin/main
 e checkout limpo. A aprovação técnica permanece limitada aos metadados sintéticos.
-Organizer consolida neste commit perfis, contratos e diagnósticos revisados,
+Organizer publicou perfis, contratos e diagnósticos revisados em `df679f8`,
 com 28 testes determinísticos aprovados; esses testes não homologam o binário Orca.
-A publicação do Transcriber depende da confirmação de incluir as alterações
-preexistentes da Etapa 8 junto às manutenções 8B/8C; nenhum runtime entra no Git.
+Erick confirmou a publicação conjunta das alterações preexistentes da Etapa 8
+e das manutenções 8B/8C do Transcriber. Main publicada em `5cfc7b8`, com SHA
+confirmado no servidor e no upstream. Resíduos sintéticos de fixtures permanecem
+não versionados e preservados; nenhum runtime entrou no Git.
 
 Sequência recomendada, sem iniciar novas implementações por este roadmap:
 
