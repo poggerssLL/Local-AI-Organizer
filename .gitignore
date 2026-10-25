@@ -76,3 +76,5 @@ models/
 *.onnx
 *.pt
 *.pth
+
+graphify-out/

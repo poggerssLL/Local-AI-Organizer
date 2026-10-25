@@ -1,6 +1,6 @@
 # Roadmap central
 
-Atualizado em: 2026-10-05.
+Atualizado em: 2026-10-06.
 
 ## Concluído neste marco
 
@@ -150,3 +150,87 @@ Sequência recomendada, sem iniciar novas implementações por este roadmap:
    e autorização específicas. Etapa 9 não iniciada.
 4. Jarvis Local permanece dependente das políticas de ferramentas/aprovação do
    File Agent; Casa Inteligente exige descoberta de contratos antes da integração.
+
+## Quatro frentes paralelas autorizadas (2026-10-06)
+
+Erick pediu executar os três próximos passos e criar um workspace pessoal de uso
+geral. Três workers Gemini 3.8 Flash high readonly/sandbox receberam despachos
+reais; o coordenador integrou source/docs como escritor único. Sem commit/push novo.
+
+1. File Agent: fixture legada tornou-se autossuficiente por teste. Clone novo sem
+   arquivos ignorados confirmou 90/89/1; skip winerror 1314 preservado. Contrato e
+   schema preparatórios da Etapa 5 escritos; adapter, modelo e dados reais fora
+   desta entrega. Próximo marco técnico: contrato/fake testável em tarefa própria.
+2. Transcriber: causa do aviso ligada a metadados til antigos, distribuição ativa
+   0.7.1/import conferidos. pip check exit 0 com aviso; Ollama local respondeu
+   e qwen2.5:3b está presente; CPU int8 e CUDA int8_float16 sondados sem inferência.
+   Reparos de ambiente e validação sintética real planejados, não executados.
+3. Orca: CLI local usa named-pipe, não TCP/WebSocket automaticamente. EPERM foi
+   reproduzido em leitores restritos. Sem mecanismo mínimo suportado demonstrado;
+   gate permanece complemento necessário. Prune Git dry-run identificou dois
+   registros antigos sem gitdir, sem excluir ou alterar permissões.
+4. Uso Geral: projeto/workspace separado registrado no Orca, com instruções curtas
+   para respostas diretas e ferramentas pequenas. Sem roteiro documental ou
+   delegação obrigatória por pergunta. Erick autorizou explicitamente a confiança;
+   terminal Gemini high com sandbox pronto. Teste de pergunta direta leu somente
+   AGENTS.md e respondeu, sem README/roadmaps, escrita ou rede. Workspace concluído.
+
+Fonte do diagnóstico atual: [Orca 2026-10-06](ORCA_RELIABILITY_DIAGNOSIS_2026-10-06.md).
+Os fatos de cada projeto ficam em sua própria documentação viva. Os testes de
+catálogo do Organizer não homologam IPC ou binário Orca.
+
+## Reparo e gate restrito de 2026-10-06
+
+Transcriber 8E: metadados inválidos em quarentena reversível, pip check sem aviso
+e 26 testes de resumo/API aprovados com mocks. Validação real de inferência é próxima.
+No Orca, exceções específicas de IPC foram investigadas. O canário operador-criado
+concluiu com política herdada always-proceed, sem homologar isolamento. O canário
+worker-start com request-review consultou o Orca usando exceção por comando e
+concluiu com consentimento único de Erick para done. Done/release/ack conferidos,
+dois Tasks completed, dois terminais retained e zero reclaimable. As configurações
+foram restauradas byte por byte. Sandbox pura segue bloqueada; launcher padrão e
+escrita real não estão homologados.
+[Validação e reversão](ORCA_IPC_REPAIR_VALIDATION_2026-10-06.md).
+[Opções de plugins e MCP](PLUGIN_AND_MCP_OPTIONS.md).
+
+## Estado confirmado em 2026-10-07
+
+- File Agent: 5A final revisada; 5B adapter local opt-in implementado e gate
+  independente de transporte/contrato aprovado. Suíte final 122/121/1, skip
+  winerror 1314. Fixture nativa qwen2.5:3b retornou abstenção; qualidade geral
+  depende de gabarito independente. Etapas 6+ não iniciadas.
+- Transcriber: 8G validou fala SAPI sintética em CPU/CUDA com WER 0 e seis
+  âncoras; resumo de texto separado com timeline preenchida. 150 testes.
+  Gate semântico final: COMPLEMENTO NECESSÁRIO por atores e redundância,
+  confirmado por reviewer independente. Etapa 9 não iniciada.
+- Orca: canário antigo teve done real recuperado; os dois leitores antigos
+  perderam terminal e ficaram failed/abandoned, sem done fabricado. Novos
+  reviewers encerraram com done reais, release e ACK. Retained não significa
+  processo encerrado; sandbox pura/launcher padrão não homologados.
+- Codex coordenador implementou; Gemini 3.8 Flash high/high fez revisões reais
+  readonly com fallback none. Reviewer Codex Sol high ficou bloqueado pelo
+  helper Windows 1223 antes de inspecionar código; roteamento novo comunicado.
+- Alterações preexistentes preservadas; sem commit/push/publicação. Não iniciados
+  Uso Geral, Jarvis ou Casa nesta onda. Modelos e fixtures exclusivamente locais
+  já existentes; nenhuma permissão ampla recriada.
+
+[Entrega, limites e próximos critérios](PORTFOLIO_CONTINUATION_2026-10-07.md).
+Os registros de 2026-10-06 abaixo são históricos; pendências IPC antigas foram
+reavaliadas e não são o estado atual.
+
+## Onda paralela registrada em 2026-10-06
+
+- File Agent 5A: contrato/fake em memória implementado. Clone novo passou
+  109/108/1, skip winerror 1314. Próximo gate: adapter local 5B e qualidade com
+  gabarito; modelo real e Etapas 6+ não iniciados.
+- Transcriber 8F: inferência real small CPU int8 e CUDA int8_float16 com tom
+  sintético; Ollama qwen2.5:3b resumiu texto sintético e persistiu Markdown/JSON.
+  142 testes e Ruff/formatação/pip check aprovados. Precisão de fala não medida;
+  repetição/timeline vazia são lacunas de qualidade antes da Etapa 9.
+- Orca: três despachos reais Gemini 3.8 Flash high, dois leitores e um escritor
+  isolado. Arquivo do canário conferido byte a byte. Done dos três aguarda
+  consentimento específico de IPC; lifecycle e releases/acks pendentes; regras temporárias removidas e política
+  restaurada, confiança autorizada da fixture preservada. Não promover writer de produção.
+
+Alterações anteriores e fixtures preservadas. Documentação/código locais,
+sem commit/push novo. [Canário e pendência](ORCA_WRITE_CANARY_VALIDATION_2026-10-06.md).

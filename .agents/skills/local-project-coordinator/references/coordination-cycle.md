@@ -20,7 +20,7 @@ executor, encerre o anterior, confira processos e Git, produza handoff sanitizad
 então inicie a nova sessão.
 
 Não interprete silêncio como falha, não abra segundo escritor e não repita efeitos de
-resultado desconhecido. No gate, separe testes, mocks e validação real e decida entre
+resultado desconhecido. Ao aguardar um worker, execute apenas **1 único** `check --wait` de 5 min (`--timeout-ms 300000` com `timeout_ms: 310000` na tool de shell); se expirar sem `worker_done`, encerre o turno em **Standby Real** (sem segundo wait e sem `worker-show` em loop) até o wake do Orca ou retorno de Erick. No gate, separe testes, mocks e validação real e decida entre
 aprovar, bloquear ou solicitar complemento.
 
 Pare quando projeto, autorização, baseline, skill, perfil ou permissão adicional não

@@ -19,17 +19,13 @@ merge, publicação ou controle visual.
 Use um escritor por checkout. Revisores operam somente leitura ou em worktrees separados.
 Não persista IDs de runtime, caminhos temporários ou dados pessoais.
 
-## Preparar e delimitar
+## Preparar e delimitar (com Batching de leitura)
 
-1. Classifique o pedido e leia `AGENTS.md` e os documentos centrais.
+1. Classifique o pedido e leia `AGENTS.md` e apenas os documentos centrais pertinentes em **um único comando consolidado** (`Get-Content -Raw -Path ...` ou `read_multiple_files`).
 2. Localize o projeto exato sem inventar caminho.
-3. Use `local-project-orientation` para raiz, instruções, branch, HEAD, upstream, working
-   tree e baseline.
-4. Defina objetivo, aceite, escopo, exclusões, riscos, validações, documentação, envelope
-   e parada.
-5. Confirme que não há outro escritor e que as skills citadas foram descobertas pelo
-   executor atual.
-6. Use `implementation-prompt-builder` para prompt e perfil final.
+3. Carregue as skills necessárias (`local-project-orientation`, `model-router-advisor`, `implementation-prompt-builder`) e o `AGENTS.md` do projeto alvo em **1 único comando em lote**, sem executar vários `Get-Content` em turnos separados e sem repetir `orca skills get <skill> --json` ou `--help` quando o `SKILL.md` local já foi lido.
+4. Ao verificar prontidão do Orca, filtre o JSON (`orca status --json | ConvertFrom-Json | Select-Object status, runtimeId`) em vez de despejar o JSON completo no contexto.
+5. Defina objetivo, aceite, escopo, exclusões, riscos, validações, documentação, envelope e parada; confirme que não há outro escritor.
 
 ## Executor e lançamento
 
@@ -53,12 +49,9 @@ fallback silencioso.
 
 Criar um prompt não autoriza lançá-lo. Criar um worker não autoriza commit ou push.
 
-## Acompanhar e revisar
+## Acompanhar e revisar (Standby Híbrido e Batching de IPC)
 
-Acompanhe sem polling excessivo, cancele diante de fuga de escopo e envie complementos ao
-mesmo worker quando possível. Use `phase-gate-reviewer` no resultado e
-`local-ai-release-review` antes de commit ou push. Atualize roadmap somente após mudança
-factual comprovada e com escrita autorizada.
+Após lançar um worker (`worker-start`), execute **no máximo 1 único** `orca orchestration check --wait --types "worker_done,escalation,question" --timeout-ms 300000 --json` (5 min), definindo também `timeout_ms: 310000` na chamada da ferramenta de terminal para impedir loops de 45s. Ao responder a uma dúvida (`question`/`escalation`), encadeie `orca orchestration reply ...; orca orchestration check --ack ...; orca orchestration check --wait ...` em **1 único comando de terminal** para economizar turnos de cache. Se o wait único expirar e o worker continuar em execução, **não repita `check --wait` nem execute `worker-show`/`terminal.preview` em loop**: encerre o turno imediatamente em **Standby Real** e aguarde o wake do Orca ou o comando de Erick para revisar e executar `worker-release`. Cancele diante de fuga de escopo e envie complementos ao mesmo worker quando possível. Use `phase-gate-reviewer` no resultado e `local-ai-release-review` antes de commit ou push. Atualize roadmap somente após mudança factual comprovada e com escrita autorizada.
 
 Consulte [o ciclo de coordenação](references/coordination-cycle.md) quando houver
 delegação, acompanhamento ou troca de executor.

@@ -1,0 +1,13 @@
+[mcp_servers.graphify]
+command = "C:/Users/erick/.local/bin/graphify-mcp.exe"
+args = ["graphify-out/graph.json"]
+
+[mcp_servers.filesystem]
+command = "npx"
+args = [
+  "-y",
+  "@modelcontextprotocol/server-filesystem",
+  "C:/Users/erick/orca/workspaces/Local AI/teste_codex",
+  "C:/Users/erick/OneDrive/Documentos/Local Transcriber",
+  "C:/Users/erick/OneDrive/Documentos/Local File Agent"
+]
